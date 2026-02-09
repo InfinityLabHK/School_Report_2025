@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>香港南區官立小學 - Practifly AI賽事校本評核分析報告</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B82F6',
+            secondary: '#8B5CF6',
+            accent: '#10B981',
+            warning: '#F59E0B',
+            danger: '#EF4444'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .card-shadow {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .radar-container {
+      position: relative;
+      height: 400px;
+      width: 100%;
+    }
+
+    .percentile-badge {
+      background: linear-gradient(135deg, #10B981, #059669);
+    }
+
+    .chart-note {
+      background: #F8FAFC;
+      border-left: 3px solid #3B82F6;
+      padding: 12px 16px;
+      margin-top: 12px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.85rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    .chart-note strong {
+      color: #1E40AF;
+    }
+
+    .chart-note.green-note {
+      border-left-color: #10B981;
+    }
+
+    .chart-note.purple-note {
+      border-left-color: #8B5CF6;
+    }
+
+    .chart-note.yellow-note {
+      border-left-color: #F59E0B;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+  <!-- ===== 頁首 ===== -->
+  <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8">
+    <div class="container mx-auto px-6">
+      <div class="text-center">
+        <h1 class="text-4xl font-bold mb-4"><i class="fa fa-trophy mr-3"></i>Practifly AI賽事校本評核分析報告</h1>
+        <h2 class="text-2xl font-semibold mb-2">香港南區官立小學（小學組）</h2>
+        <p class="text-blue-100">2025粵港澳大灣區第四屆暨全國首屆校際數理思維精英挑戰賽</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-6 py-8">
+
+    <!-- ===== 百分位排名說明 ===== -->
+    <section class="mb-8">
+      <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+        <p class="text-blue-800 text-sm"><i
+            class="fa fa-info-circle mr-2"></i><strong>百分位排名說明：</strong>本報告採用「累積百分位排名」展示成績，表示學生在全部初賽參賽者中超越了多少百分比的選手。例如「超越75%」表示該學生成績優於75%的參賽者，位於前25%。本屆比賽涵蓋<strong>12個城市</strong>（香港、澳門、廣州、深圳、珠海、佛山、東莞、中山、惠州、重慶、成都、上海），共3686名學生參加初賽。所有數據均從比賽原始成績嚴格計算得出。</p>
+      </div>
+    </section>
+
+    <!-- ===== 學校概況 4 卡片 ===== -->
+    <section class="mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- 卡片1: 參賽人數 -->
+        <div class="bg-white rounded-xl p-6 card-shadow text-center">
+          <i class="fa fa-users text-blue-600 text-3xl mb-4"></i>
+          <h3 class="text-gray-600 text-sm font-medium mb-2">本校參賽人數</h3>
+          <p class="text-3xl font-bold text-gray-800">33</p>
+          <p class="text-xs text-gray-500 mt-1">複賽 28 人、決賽 21 人</p>
+        </div>
+        <!-- 卡片2: 加權平均百分位（真實計算） -->
+        <div class="bg-white rounded-xl p-6 card-shadow text-center">
+          <i class="fa fa-line-chart text-green-600 text-3xl mb-4"></i>
+          <h3 class="text-gray-600 text-sm font-medium mb-2">綜合平均百分位</h3>
+          <p class="text-3xl font-bold text-green-600">Top 41.0%</p>
+          <p class="text-xs text-gray-500 mt-1">2輪加權平均：超越59.0%參賽者</p>
+        </div>
+        <!-- 卡片3: 晉級率 -->
+        <div class="bg-white rounded-xl p-6 card-shadow text-center">
+          <i class="fa fa-check-circle text-purple-600 text-3xl mb-4"></i>
+          <h3 class="text-gray-600 text-sm font-medium mb-2">晉級率</h3>
+          <p class="text-3xl font-bold text-purple-600">0.0%</p>
+          <p class="text-xs text-gray-500 mt-1">28人參加複賽</p>
+        </div>
+        <!-- 卡片4: 決賽表現（僅有決賽數據時顯示真實數據） -->
+        <div class="bg-white rounded-xl p-6 card-shadow text-center">
+          <i class="fa fa-star text-yellow-600 text-3xl mb-4"></i>
+          
+          <h3 class="text-gray-600 text-sm font-medium mb-2">決賽累積百分位</h3>
+          <p class="text-3xl font-bold text-yellow-600">Top 26.2%</p>
+          <p class="text-xs text-gray-500 mt-1">21名決賽選手，超越73.8%初賽全體</p>
+          
+        </div>
+      </div>
+      <div class="chart-note mt-4">
+        <strong><i class="fa fa-calculator mr-1"></i>數據說明：</strong>
+        「綜合平均百分位」是根據本校在複賽、決賽中實際參賽學生的累積百分位進行加權平均計算所得，權重為各輪次的參賽人數。
+        「決賽累積百分位」表示決賽選手相對於全部初賽參賽者的排名位置，能晉級決賽本身已代表超越大部分初賽選手。
+      </div>
+    </section>
+
+    <!-- ===== 全國 / 香港百分位對比 ===== -->
+    <section class="mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 全國對比 -->
+        <div class="bg-white rounded-xl p-6 card-shadow">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4"><i class="fa fa-globe text-blue-600 mr-2"></i>全國百分位對比
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between"><span>本校綜合百分位：</span><span class="font-bold text-green-600">超越 59.0%</span></div>
+            <div class="flex justify-between"><span>全國平均百分位：</span><span class="font-bold">57.2%</span></div>
+            
+            
+            <div class="p-3 rounded-lg bg-green-100 text-green-800"><i class="fa fa-arrow-up mr-2"></i>高於全國平均 1.8 個百分位</div>
+            
+          </div>
+          <div class="chart-note mt-3">
+            <strong>全國</strong>指本屆比賽涵蓋的12個城市、共116所學校的全部參賽學生。全國平均百分位根據各參賽學校的平均表現計算得出，確保每所學校的權重相同。
+          </div>
+        </div>
+        <!-- 香港對比 -->
+        <div class="bg-white rounded-xl p-6 card-shadow">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4"><i class="fa fa-map-marker text-red-600 mr-2"></i>香港百分位對比
+          </h3>
+          <div class="space-y-3">
+            <div class="flex justify-between"><span>本校綜合百分位：</span><span class="font-bold text-green-600">超越 59.0%</span></div>
+            <div class="flex justify-between"><span>香港平均百分位：</span><span class="font-bold">55.7%</span></div>
+            
+            
+            <div class="p-3 rounded-lg bg-green-100 text-green-800"><i class="fa fa-arrow-up mr-2"></i>高於
+              3.3 個百分位</div>
+            
+          </div>
+          <div class="chart-note mt-3">
+            <div style="height: 350px;"><canvas id="comparisonChart"></canvas></div>
+            <div class="chart-note">
+              <strong><i class="fa fa-bar-chart mr-1"></i>圖表解讀：</strong>
+              此圖展示本校學生在各輪次比賽中的累積百分位排名，與香港平均、內地平均及全國平均進行對比。柱狀越高代表表現越好。所有對比數據均從12個城市的實際比賽成績計算得出。
+              由於複賽和決賽的累積百分位是映射到初賽全體參賽者中的排名，能晉級並保持高百分位說明學生在更高難度的比賽中依然出色。
+            </div>
+          </div>
+          <div class="space-y-4">
+            <!-- 初賽 -->
+            
+            <!-- 複賽 -->
+            
+            <div class="bg-purple-50 rounded-xl p-5 border border-purple-100">
+              <div class="flex justify-between items-center mb-3">
+                <span class="font-bold text-purple-800 text-lg"><i class="fa fa-medal mr-2"></i>複賽</span>
+                <span class="percentile-badge text-white px-3 py-1 rounded-full text-sm font-bold">超越 44.1%</span>
+              </div>
+              <div class="grid grid-cols-4 gap-2 text-center">
+                <div class="bg-white rounded-lg p-2">
+                  <div class="text-xl font-bold text-blue-600">44.1%</div>
+                  <div class="text-xs text-gray-500">本校</div>
+                </div>
+                <div class="bg-white rounded-lg p-2">
+                  <div class="text-xl font-bold text-green-600">40.1%</div>
+                  <div class="text-xs text-gray-500">香港</div>
+                </div>
+                <div class="bg-white rounded-lg p-2">
+                  <div class="text-xl font-bold text-orange-600">62.1%</div>
+                  <div class="text-xs text-gray-500">內地</div>
+                </div>
+                <div class="bg-white rounded-lg p-2">
+                  <div class="text-xl font-bold text-purple-600">42.7%</div>
+                  <div class="text-xs text-gray-500">全國</div>
+                </div>
+              </div>
+              
+              
+              <p class="text-xs text-gray-500 mt-2 text-center">28人參賽，21人晉級決賽
+                <span class="text-green-600 font-bold">↑ 44.1%</span>
+              </p>
+              
+            </div>
+            
+            <!-- 決賽 -->
+            
+            <div class="bg-green-50 rounded-xl p-5 border border-green-100">
+              <div class="flex justify-between items-center mb-3">
+                <span class="font-bold text-green-800 text-lg"><i class="fa fa-trophy mr-2"></i>決賽</span>
+                <span class="percentile-badge text-white px-3 py-1 rounded-full text-sm font-bold">超越 73.8%</span>
+              </div>
+              <div class="grid grid-cols-4 gap-2 text-center">
+                <div class="bg-white rounded-lg p-2">
+                  <div class="text-xl font-bold text-blue-600">73.8%</div>
+                  <div class="text-xs text-gray-500">本校</div>
+                </div>
+                <div class="bg-white rounded-lg p-2">
+                  <div class="text-xl font-bold text-green-600">71.3%</div>
+                  <div class="text-xs text-gray-500">香港</div>
+                </div>
+                <div class="bg-white rounded-lg p-2">
+                  <div class="text-xl font-bold text-orange-600">79.9%</div>
+                  <div class="text-xs text-gray-500">內地</div>
+                </div>
+                <div class="bg-white rounded-lg p-2">
+                  <div class="text-xl font-bold text-purple-600">71.6%</div>
+                  <div class="text-xs text-gray-500">全國</div>
+                </div>
+              </div>
+              
+              
+              <p class="text-xs text-gray-500 mt-2 text-center">21人完成決賽
+                <span class="text-green-600 font-bold">↑ 29.7%</span>
+              </p>
+              
+            </div>
+            
+          </div>
+        </div>
+        <!-- 趨勢總結 -->
+        
+        <div class="mt-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border border-green-200">
+          <p class="text-green-800 text-center font-medium"><i
+              class="fa fa-arrow-up mr-2"></i>本校學生百分位排名呈<strong>持續上升趨勢</strong>：複賽44.1% → 決賽73.8%，顯示學生在更高難度比賽中表現更出色！</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- ===== 學習範疇百分位對比 (小學5大範疇雷達圖) ===== -->
+    <section class="mb-12">
+      <div class="bg-white rounded-xl p-8 card-shadow">
+        <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center"><i
+            class="fa fa-area-chart text-primary mr-3"></i>學習範疇正確率對比</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="radar-container"><canvas id="areaRadarChart"></canvas></div>
+          <div>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
+              <div class="flex items-center justify-center space-x-2">
+                <div class="w-4 h-4 bg-blue-500 rounded-full"></div><span class="text-sm text-gray-600">本校</span>
+              </div>
+              <div class="flex items-center justify-center space-x-2">
+                <div class="w-4 h-4 bg-red-500 rounded-full"></div><span class="text-sm text-gray-600">全國平均</span>
+              </div>
+              <div class="flex items-center justify-center space-x-2">
+                <div class="w-4 h-4 bg-green-500 rounded-full"></div><span class="text-sm text-gray-600">香港平均</span>
+              </div>
+            </div>
+            <div class="chart-note green-note">
+              <strong><i class="fa fa-area-chart mr-1"></i>圖表解讀：</strong>
+              此雷達圖展示本校學生在小學數學五大學習範疇（數、圖形與空間、度量、數據處理、代數）的答題正確率，並與全國及香港所有參賽學校的平均正確率進行比較。<br><br>
+              <strong>如何閱讀：</strong>藍色區域（本校）向外擴張的範疇代表學校的強項；若藍色落在紅色（全國）或綠色（香港）之內，則該範疇有提升空間。
+            </div>
+            <div class="chart-note yellow-note mt-3">
+              <strong><i class="fa fa-lightbulb mr-1"></i>教學建議：</strong>
+              
+              <p class="mb-1">✓ 「圖形與空間」範疇正確率達 75.4%，高於全國平均（68.8%），表現突出。 學生在空間感和圖形辨識方面表現突出，可進一步引入立體圖形的展開圖和三視圖等進階內容。</p>
+              
+              <p class="mb-1">✓ 建議利用實物操作和電子工具（如GeoGebra）讓學生探索圖形的對稱、旋轉和平移變換。</p>
+              
+              
+              <p class="mb-1">→ 「數」範疇正確率為 71.2%（全國平均 73.8%），有進一步提升的空間。 數的基礎概念掌握尚可，建議加強分數和小數的概念理解，特別是分數比較和運算，可透過生活情境（如分享食物、量度長度）幫助學生建立直觀認知。</p>
+              
+              <p class="mb-1">→ 可針對數的規律和數列進行專題練習，培養學生歸納推理的能力。</p>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 學習範疇詳細分析 (進度條) ===== -->
+    <section class="mb-12">
+      <div class="bg-white rounded-xl p-8 card-shadow">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center"><i
+            class="fa fa-bar-chart text-accent mr-3"></i>學習範疇詳細分析（正確率）</h2>
+        <div class="chart-note mb-6">
+          <strong><i class="fa fa-info-circle mr-1"></i>分析說明：</strong>
+          以下展示本校學生在各學習範疇的答題正確率。正確率根據學生在對應題目上的實際作答結果計算。「香港」和「全國」的數值分別為香港及全國所有參賽學生在該範疇的平均正確率，用於橫向比較。正確率越高表示該範疇掌握越好。
+        </div>
+        <div class="space-y-4">
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">數</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-blue-100 text-blue-800">
+                  良好
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">71.2%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 71.2%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：數能力（15個單元）</span>
+              <span>香港: 72.8% | 全國: 73.8%</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">圖形與空間</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-green-100 text-green-800">
+                  優秀
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">75.4%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 75.4%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：圖形與空間能力（10個單元）</span>
+              <span>香港: 71.8% | 全國: 68.8%</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">度量</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-blue-100 text-blue-800">
+                  良好
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">65.4%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 65.4%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：度量能力（10個單元）</span>
+              <span>香港: 65.8% | 全國: 67.7%</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">數據處理</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-green-100 text-green-800">
+                  優秀
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">75.5%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 75.5%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：數據處理能力（7個單元）</span>
+              <span>香港: 60.5% | 全國: 64.0%</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">代數</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-blue-100 text-blue-800">
+                  良好
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">67.0%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 67.0%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：代數能力（8個單元）</span>
+              <span>香港: 57.2% | 全國: 59.6%</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 學習單元正確率分析（按年級分別雷達圖） ===== -->
+    <section class="mb-12">
+      <div class="bg-white rounded-xl p-8 card-shadow">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center"><i
+            class="fa fa-pie-chart text-secondary mr-3"></i>學習單元正確率分析</h2>
+        <div class="chart-note mb-6">
+          <strong><i class="fa fa-info-circle mr-1"></i>分析說明：</strong>
+          以下根據本校參賽的各個年級，分別展示其對應的課程學習單元和範疇正確率。每個年級的雷達圖顯示該年級學生在各學習範疇的答題正確率，並與全國及香港平均進行比較。各年級的學習單元根據香港教育局小學數學課程闡釋分類。
+        </div>
+
+        
+        <div class="bg-gray-50 rounded-xl p-6 mb-6 ">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">
+            <i class="fa fa-graduation-cap text-secondary mr-2"></i>P4 年級
+            <span class="text-sm font-normal text-gray-500 ml-2">（10 名學生）</span>
+          </h3>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- 雷達圖 -->
+            <div>
+              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_P4"></canvas></div>
+              <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-purple-500 rounded-full"></div><span class="text-xs text-gray-600">本校</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-red-500 rounded-full"></div><span class="text-xs text-gray-600">全國</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div><span class="text-xs text-gray-600">香港</span>
+                </div>
+              </div>
+            </div>
+            <!-- 單元列表 -->
+            <div>
+              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>P4 年級課程學習單元</h4>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-blue-600">正確率
+                    65.3%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">乘法(二) <strong>(70.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">除法(二) <strong>(30.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">倍數和因數 <strong>(70.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">公倍數和公因數 <strong>(60.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">四則運算(二) <strong>(40.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">分數(二) <strong>(90.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">小數(一) <strong>(70.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">小數(二) <strong>(68.8%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-blue-600">正確率
+                    59.0%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">周界(一) <strong>(46.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">面積(一) <strong>(72.0%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">圖形與空間</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-blue-600">正確率
+                    69.0%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">四邊形(三) <strong>(56.7%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">圖形分割和拼砌 <strong>(63.3%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">方向和位置(三) <strong>(82.5%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數據處理</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-blue-600">正確率
+                    52.9%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">棒形圖(二) <strong>(52.9%)</strong></span>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-6 mb-6 mt-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">
+            <i class="fa fa-graduation-cap text-secondary mr-2"></i>P5 年級
+            <span class="text-sm font-normal text-gray-500 ml-2">（11 名學生）</span>
+          </h3>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- 雷達圖 -->
+            <div>
+              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_P5"></canvas></div>
+              <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-purple-500 rounded-full"></div><span class="text-xs text-gray-600">本校</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-red-500 rounded-full"></div><span class="text-xs text-gray-600">全國</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div><span class="text-xs text-gray-600">香港</span>
+                </div>
+              </div>
+            </div>
+            <!-- 單元列表 -->
+            <div>
+              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>P5 年級課程學習單元</h4>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-blue-600">正確率
+                    68.5%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">多位數 <strong>(90.9%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">分數(三) <strong>(93.9%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">分數(四) <strong>(69.7%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">小數(三) <strong>(45.5%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">分數(五) <strong>(42.4%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-blue-600">正確率
+                    55.5%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">面積(二) <strong>(54.5%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">體積(一) <strong>(56.4%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">圖形與空間</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    82.7%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">圓 <strong>(78.2%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">立體圖形(三) <strong>(87.3%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數據處理</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    84.4%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">棒形圖(三) <strong>(84.4%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">代數</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-blue-600">正確率
+                    60.2%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">代數的初步認識 <strong>(61.4%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">簡易方程(一) <strong>(59.1%)</strong></span>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-6 mb-6 mt-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">
+            <i class="fa fa-graduation-cap text-secondary mr-2"></i>P6 年級
+            <span class="text-sm font-normal text-gray-500 ml-2">（7 名學生）</span>
+          </h3>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- 雷達圖 -->
+            <div>
+              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_P6"></canvas></div>
+              <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-purple-500 rounded-full"></div><span class="text-xs text-gray-600">本校</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-red-500 rounded-full"></div><span class="text-xs text-gray-600">全國</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div><span class="text-xs text-gray-600">香港</span>
+                </div>
+              </div>
+            </div>
+            <!-- 單元列表 -->
+            <div>
+              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>P6 年級課程學習單元</h4>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    83.8%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">小數(四) <strong>(90.5%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">小數(五) <strong>(81.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">百分數(一) <strong>(85.7%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">百分數(二) <strong>(81.0%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    90.0%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">角(度) <strong>(78.6%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">體積(二) <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">周界(二) <strong>(85.7%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">速率 <strong>(92.9%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">面積(三) <strong>(92.9%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">圖形與空間</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    72.9%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">對稱 <strong>(72.9%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數據處理</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    93.9%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">平均數 <strong>(71.4%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">折線圖 <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">圓形圖 <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">統計的應用及誤用 <strong>(96.4%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">代數</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    73.2%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">簡易方程(二) <strong>(73.2%)</strong></span>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </section>
+
+    <!-- ===== 百分位分布 + 各年級趨勢 ===== -->
+    <section class="mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- 百分位分布 -->
+        <div class="bg-white rounded-xl p-8 card-shadow">
+          <h2 class="text-xl font-bold text-gray-800 mb-6 text-center"><i
+              class="fa fa-pie-chart text-warning mr-2"></i>學生百分位分布</h2>
+          <div style="height: 280px;"><canvas id="scoreDistributionChart"></canvas></div>
+          <div class="chart-note yellow-note mt-4">
+            <strong><i class="fa fa-pie-chart mr-1"></i>圖表解讀：</strong>
+            此環形圖展示本校參賽學生在全國排名中的分布情況。綠色(Top 10%)和藍色(Top 25%)佔比越高，代表學校高水平學生越多。
+            
+          </div>
+        </div>
+        <!-- 各年級趨勢 -->
+        <div class="bg-white rounded-xl p-8 card-shadow">
+          <h2 class="text-xl font-bold text-gray-800 mb-6 text-center"><i
+              class="fa fa-line-chart text-accent mr-2"></i>各年級百分位趨勢</h2>
+          <div style="height: 280px;"><canvas id="gradeTrendChart"></canvas></div>
+          <div class="chart-note green-note mt-4">
+            <strong><i class="fa fa-line-chart mr-1"></i>圖表解讀：</strong>
+            此折線圖展示各年級學生從初賽到決賽的累積百分位變化趨勢。線條上升表示該年級學生在更高輪次表現更好。<strong>若某年級在某輪次無學生參賽，則不顯示該數據點</strong>（線條中斷），而非顯示為下降。這確保趨勢圖真實反映實際參賽學生的表現。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 各輪次學生百分位排名 ===== -->
+    <section class="mb-12">
+      <div class="bg-white rounded-xl p-8 card-shadow">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center"><i
+            class="fa fa-users text-primary mr-3"></i>各輪次學生百分位排名</h2>
+        <div class="chart-note mb-6">
+          <strong><i class="fa fa-info-circle mr-1"></i>排名說明：</strong>
+          以下列出本校在各輪次的所有參賽學生。百分位排名表示該學生超越了全國初賽多少百分比的參賽者。複賽和決賽的百分位是累積排名（映射到全部初賽3686名參賽者中），因此能晉級並取得高百分位更加難能可貴。
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          
+          
+          
+          
+          <div class="border rounded-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-4 text-center">
+              <h3 class="font-bold text-lg">複賽 (28人)</h3>
+              <p class="text-2xl font-bold mt-1">平均超越 44.1%</p>
+            </div>
+            <div class="max-h-[32rem] overflow-y-auto">
+              <table class="w-full text-sm">
+                <tbody class="divide-y">
+                  
+                  <tr class="bg-yellow-50" >
+                    <td class="p-2">🥇 郭奕樂</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越96.1%</td>
+                    </tr>
+                    
+                  <tr class="bg-gray-50" >
+                    <td class="p-2">🥈 謝善行</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越79.6%</td>
+                    </tr>
+                    
+                  <tr class="bg-amber-50" >
+                    <td class="p-2">🥉 羅梓誠</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越77.1%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 吳達希</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越77.1%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 王浩灃</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越74.8%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 盧愷然</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越71.1%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 陳亭玉</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越67.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 張栩樂</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越62.8%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 李進禧</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越62.2%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 鄧昊賢</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越55.2%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 葉晉希</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越51.6%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 曾俊熙</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越48.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 陳靖忻</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越45.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 羅靖琳</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越45.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 林秋澔</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越43.6%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 蘇庭浠</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越39.9%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 劉沛瑩</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越39.8%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 李善殷</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越39.1%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 盧朗程</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越32.3%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 楊洛</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越28.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 鄭日熙</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越27.8%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 王鍵銘</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越19.8%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 梁逸朗</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越18.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 馬芷晴</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越15.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 黃柏燁</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越11.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 陳鈺婷</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越4.5%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 李日希</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越0.0%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 趙國棟</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-yellow-600">
+                      超越0.0%</td>
+                    </tr>
+                    
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          
+          
+          <div class="border rounded-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-4 text-center">
+              <h3 class="font-bold text-lg">決賽 (21人)</h3>
+              <p class="text-2xl font-bold mt-1">平均超越 73.8%</p>
+            </div>
+            <div class="max-h-[32rem] overflow-y-auto">
+              <table class="w-full text-sm">
+                <tbody class="divide-y">
+                  
+                  <tr class="bg-yellow-50" >
+                    <td class="p-2">🥇 吳達希</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越96.5%</td>
+                    </tr>
+                    
+                  <tr class="bg-gray-50" >
+                    <td class="p-2">🥈 郭奕樂</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越94.4%</td>
+                    </tr>
+                    
+                  <tr class="bg-amber-50" >
+                    <td class="p-2">🥉 鄧昊賢</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越90.7%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 王浩灃</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越90.7%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 張栩樂</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越88.2%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 羅梓誠</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越87.6%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 鄭日熙</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越86.7%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 羅靖琳</td>
+                    <td class="text-center text-gray-500">P6</td>
+                    <td
+                      class="text-right p-2 font-bold text-green-600">
+                      超越75.0%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 梁逸朗</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越74.8%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 李進禧</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越74.6%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 葉晉希</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越71.4%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 劉沛瑩</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越70.1%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 蘇庭浠</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越68.0%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 黃柏燁</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越65.2%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 林秋澔</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越63.2%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 楊洛</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越63.2%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 李日希</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越63.2%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 馬芷晴</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越57.7%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 陳鈺婷</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越57.7%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 盧朗程</td>
+                    <td class="text-center text-gray-500">P5</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越57.2%</td>
+                    </tr>
+                    
+                  <tr>
+                    <td class="p-2 pl-6"> 趙國棟</td>
+                    <td class="text-center text-gray-500">P4</td>
+                    <td
+                      class="text-right p-2 font-bold text-blue-600">
+                      超越53.7%</td>
+                    </tr>
+                    
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 年級分析 ===== -->
+    <section class="mb-12">
+      
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+        
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-blue-500">
+          <h4 class="font-bold text-gray-800 mb-2">P4 累積百分位</h4>
+          <p class="text-2xl font-bold text-blue-600">超越50.3%</p>
+          <p class="text-sm text-gray-500 mt-2">上升 ↑</p>
+          <p class="text-xs text-green-600 mt-1"></p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-green-500">
+          <h4 class="font-bold text-gray-800 mb-2">P5 累積百分位</h4>
+          <p class="text-2xl font-bold text-green-600">超越59.4%</p>
+          <p class="text-sm text-gray-500 mt-2">上升 ↑</p>
+          <p class="text-xs text-green-600 mt-1"></p>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-purple-500">
+          <h4 class="font-bold text-gray-800 mb-2">P6 累積百分位</h4>
+          <p class="text-2xl font-bold text-purple-600">超越74.4%</p>
+          <p class="text-sm text-gray-500 mt-2">上升 ↑</p>
+          <p class="text-xs text-green-600 mt-1"></p>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- ===== 個性化教學建議 ===== -->
+    <section class="mb-12">
+      <div class="bg-white rounded-xl p-8 card-shadow">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center"><i
+            class="fa fa-lightbulb text-warning mr-3"></i>個性化教學建議</h2>
+        <div class="chart-note yellow-note mb-6">
+          <strong><i class="fa fa-info-circle mr-1"></i>建議說明：</strong>
+          以下建議是根據本校在各學習範疇的正確率表現、學生百分位分布、各輪次趨勢及晉級情況等多維度數據自動分析生成。建議分為「亮點與優勢」和「提升建議」兩部分，旨在為學校的數學教學提供具體、可操作的參考方向。
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div class="bg-gradient-to-br from-green-50 to-emerald-100 rounded-xl p-6 border border-green-200">
+            <h3 class="text-xl font-bold text-green-800 mb-4"><i class="fa fa-star mr-2"></i>亮點與優勢</h3>
+            <ul class="space-y-3 text-gray-700">
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「圖形與空間」範疇正確率達 75.4%，高於全國平均（68.8%），表現突出。 學生在空間感和圖形辨識方面表現突出，可進一步引入立體圖形的展開圖和三視圖等進階內容。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>建議利用實物操作和電子工具（如GeoGebra）讓學生探索圖形的對稱、旋轉和平移變換。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「數據處理」範疇正確率達 75.5%，高於全國平均（64.0%），表現突出。 學生在數據解讀和圖表分析方面表現優異，可嘗試引入更複雜的統計概念，如平均數的應用和數據的比較分析。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>建議讓學生嘗試自行設計問卷和收集數據，體驗完整的統計探究流程。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「代數」範疇正確率達 67.0%，高於全國平均（59.6%），表現突出。 代數思維能力突出，學生能靈活運用符號和公式解決問題。建議進一步培養歸納法思維和規律推廣能力。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>可嘗試簡單的函數思維訓練，為中學代數學習打好基礎。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>學生表現分佈較為均衡，反映學校教學照顧到了不同程度的學生。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>可考慮實施分層教學策略，針對不同程度的學生設計差異化的學習任務。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>學生從初賽到後續輪次的累積百分位呈上升趨勢，說明學生的學習能力和競賽適應力不斷提升。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>晉級學生的表現持續進步，反映學校的數學教學培養了學生良好的學習韌性。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>本次比賽數據可作為校本評估的重要參考，建議將各範疇的分析結果納入教學規劃。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>可定期檢視學生在各範疇的表現變化，作為調整教學重點的依據。</li>
+              
+            </ul>
+          </div>
+          <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200">
+            <h3 class="text-xl font-bold text-blue-800 mb-4"><i class="fa fa-rocket mr-2"></i>提升建議</h3>
+            <ul class="space-y-3 text-gray-700">
+              
+              <li class="flex items-start"><span class="text-blue-500 mr-2">→</span>「數」範疇正確率為 71.2%（全國平均 73.8%），有進一步提升的空間。 數的基礎概念掌握尚可，建議加強分數和小數的概念理解，特別是分數比較和運算，可透過生活情境（如分享食物、量度長度）幫助學生建立直觀認知。</li>
+              
+              <li class="flex items-start"><span class="text-blue-500 mr-2">→</span>可針對數的規律和數列進行專題練習，培養學生歸納推理的能力。</li>
+              
+              <li class="flex items-start"><span class="text-blue-500 mr-2">→</span>「度量」範疇正確率為 65.4%（全國平均 67.7%），有進一步提升的空間。 度量概念基本掌握，建議加強不同單位之間的換算訓練，特別是面積和容量單位。</li>
+              
+              <li class="flex items-start"><span class="text-blue-500 mr-2">→</span>可透過實際量度活動（如量度課室面積、估算容器容量）提升學生的度量感。</li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 頁尾 ===== -->
+  <footer class="bg-gray-800 text-white py-6">
+    <div class="container mx-auto px-6 text-center">
+      <p class="text-gray-400">© 2025 大灣區數學思維精英挑戰賽 | Practifly AI Platform</p>
+      <p class="text-gray-500 text-xs mt-2">* 所有百分位及正確率數據均從12個城市（香港、澳門、廣州、深圳、珠海、佛山、東莞、中山、惠州、重慶、成都、上海）的比賽原始成績計算得出</p>
+    </div>
+  </footer>
+
+  <!-- ===== 圖表渲染 ===== -->
+  <script>
+    const chartData = {"trend": {"school": [44.1, 73.8], "hk": [40.1, 71.3], "mainland": [62.1, 79.9], "national": [42.7, 71.6]}, "area_radar": {"labels": ["數", "圖形與空間", "度量", "數據處理", "代數"], "school": [71.2, 75.4, 65.4, 75.5, 67.0], "national": [73.8, 68.8, 67.7, 64.0, 59.6], "hk": [72.8, 71.8, 65.8, 60.5, 57.2]}, "unit_radar": {"labels": ["數綜合應用", "圖形與空間綜合應用", "度量綜合應用", "數據處理綜合應用", "代數綜合應用"], "school": [71.2, 75.4, 65.4, 75.5, 67.0], "national": [73.8, 68.8, 67.7, 64.0, 59.6], "hk": [72.8, 71.8, 65.8, 60.5, 57.2]}, "distribution": [4, 4, 13, 0], "grade_trend": {"datasets": [{"label": "P4", "data": [31.6, 69.0]}, {"label": "P5", "data": [43.6, 75.3]}, {"label": "P6", "data": [62.8, 85.9]}]}};
+
+    /* ---------- 1. 三輪百分位趨勢柱狀圖 ---------- */
+    new Chart(document.getElementById('comparisonChart'), {
+      type: 'bar',
+      data: {
+        labels: ["複賽", "決賽"],
+      datasets: [
+      { label: '本校', data: chartData.trend.school, backgroundColor: 'rgba(59, 130, 246, 0.85)', borderRadius: 6 },
+      { label: '香港', data: chartData.trend.hk, backgroundColor: 'rgba(16, 185, 129, 0.85)', borderRadius: 6 },
+      { label: '內地', data: chartData.trend.mainland, backgroundColor: 'rgba(249, 115, 22, 0.85)', borderRadius: 6 },
+      { label: '全國', data: chartData.trend.national, backgroundColor: 'rgba(139, 92, 246, 0.85)', borderRadius: 6 }
+    ]
+      },
+      options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' }, title: { display: true, text: '累積百分位排名（超越%參賽者）' } },
+      scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => '超越' + v + '%' } } }
+    }
+    });
+
+    /* ---------- 2. 五大學習範疇雷達圖 ---------- */
+    new Chart(document.getElementById('areaRadarChart'), {
+      type: 'radar',
+      data: {
+        labels: chartData.area_radar.labels,
+        datasets: [{
+          label: '本校', data: chartData.area_radar.school,
+          borderColor: '#3B82F6', backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          borderWidth: 3, pointBackgroundColor: '#3B82F6', pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 6
+        }, {
+          label: '全國平均', data: chartData.area_radar.national,
+          borderColor: '#EF4444', backgroundColor: 'rgba(239, 68, 68, 0.1)',
+          borderWidth: 3, pointBackgroundColor: '#EF4444', pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 6
+        }, {
+          label: '香港平均', data: chartData.area_radar.hk,
+          borderColor: '#10B981', backgroundColor: 'rgba(16, 185, 129, 0.1)',
+          borderWidth: 3, pointBackgroundColor: '#10B981', pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 6
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        scales: { r: { angleLines: { display: true, color: 'rgba(0,0,0,0.1)' }, suggestedMin: 0, suggestedMax: 100, ticks: { stepSize: 20, font: { size: 10 }, callback: v => v + '%' }, pointLabels: { font: { size: 14, weight: 'bold' } } } },
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    /* ---------- 3. 年級學習單元雷達圖（動態生成） ---------- */
+    const gradeUnitRadars = [{"grade": "P4", "canvas_id": "unitRadar_P4", "n_students": 10, "labels": ["數", "度量", "圖形與空間", "數據處理"], "school": [65.3, 59.0, 69.0, 52.9], "national": [73.8, 67.7, 68.8, 64.0], "hk": [72.8, 65.8, 71.8, 60.5], "units_by_area": [{"area": "數", "pct": 65.3, "units": [{"name": "乘法(二)", "pct": 70.0}, {"name": "除法(二)", "pct": 30.0}, {"name": "倍數和因數", "pct": 70.0}, {"name": "公倍數和公因數", "pct": 60.0}, {"name": "四則運算(二)", "pct": 40.0}, {"name": "分數(二)", "pct": 90.0}, {"name": "小數(一)", "pct": 70.0}, {"name": "小數(二)", "pct": 68.8}]}, {"area": "度量", "pct": 59.0, "units": [{"name": "周界(一)", "pct": 46.0}, {"name": "面積(一)", "pct": 72.0}]}, {"area": "圖形與空間", "pct": 69.0, "units": [{"name": "四邊形(三)", "pct": 56.7}, {"name": "圖形分割和拼砌", "pct": 63.3}, {"name": "方向和位置(三)", "pct": 82.5}]}, {"area": "數據處理", "pct": 52.9, "units": [{"name": "棒形圖(二)", "pct": 52.9}]}]}, {"grade": "P5", "canvas_id": "unitRadar_P5", "n_students": 11, "labels": ["數", "度量", "圖形與空間", "數據處理", "代數"], "school": [68.5, 55.5, 82.7, 84.4, 60.2], "national": [73.8, 67.7, 68.8, 64.0, 59.6], "hk": [72.8, 65.8, 71.8, 60.5, 57.2], "units_by_area": [{"area": "數", "pct": 68.5, "units": [{"name": "多位數", "pct": 90.9}, {"name": "分數(三)", "pct": 93.9}, {"name": "分數(四)", "pct": 69.7}, {"name": "小數(三)", "pct": 45.5}, {"name": "分數(五)", "pct": 42.4}]}, {"area": "度量", "pct": 55.5, "units": [{"name": "面積(二)", "pct": 54.5}, {"name": "體積(一)", "pct": 56.4}]}, {"area": "圖形與空間", "pct": 82.7, "units": [{"name": "圓", "pct": 78.2}, {"name": "立體圖形(三)", "pct": 87.3}]}, {"area": "數據處理", "pct": 84.4, "units": [{"name": "棒形圖(三)", "pct": 84.4}]}, {"area": "代數", "pct": 60.2, "units": [{"name": "代數的初步認識", "pct": 61.4}, {"name": "簡易方程(一)", "pct": 59.1}]}]}, {"grade": "P6", "canvas_id": "unitRadar_P6", "n_students": 7, "labels": ["數", "度量", "圖形與空間", "數據處理", "代數"], "school": [83.8, 90.0, 72.9, 93.9, 73.2], "national": [73.8, 67.7, 68.8, 64.0, 59.6], "hk": [72.8, 65.8, 71.8, 60.5, 57.2], "units_by_area": [{"area": "數", "pct": 83.8, "units": [{"name": "小數(四)", "pct": 90.5}, {"name": "小數(五)", "pct": 81.0}, {"name": "百分數(一)", "pct": 85.7}, {"name": "百分數(二)", "pct": 81.0}]}, {"area": "度量", "pct": 90.0, "units": [{"name": "角(度)", "pct": 78.6}, {"name": "體積(二)", "pct": 100.0}, {"name": "周界(二)", "pct": 85.7}, {"name": "速率", "pct": 92.9}, {"name": "面積(三)", "pct": 92.9}]}, {"area": "圖形與空間", "pct": 72.9, "units": [{"name": "對稱", "pct": 72.9}]}, {"area": "數據處理", "pct": 93.9, "units": [{"name": "平均數", "pct": 71.4}, {"name": "折線圖", "pct": 100.0}, {"name": "圓形圖", "pct": 100.0}, {"name": "統計的應用及誤用", "pct": 96.4}]}, {"area": "代數", "pct": 73.2, "units": [{"name": "簡易方程(二)", "pct": 73.2}]}]}];
+    const gradeRadarColors = ['#8B5CF6', '#3B82F6', '#10B981', '#F59E0B', '#EC4899', '#14B8A6'];
+    gradeUnitRadars.forEach(function (gr, idx) {
+      const canvas = document.getElementById(gr.canvas_id);
+      if (!canvas) return;
+      new Chart(canvas, {
+        type: 'radar',
+        data: {
+          labels: gr.labels,
+          datasets: [{
+            label: '本校 (' + gr.grade + ')',
+            data: gr.school,
+            borderColor: gradeRadarColors[idx % gradeRadarColors.length],
+            backgroundColor: gradeRadarColors[idx % gradeRadarColors.length] + '1A',
+            borderWidth: 3, pointBackgroundColor: gradeRadarColors[idx % gradeRadarColors.length],
+            pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 6
+          }, {
+            label: '全國平均',
+            data: gr.national,
+            borderColor: '#EF4444', backgroundColor: 'rgba(239, 68, 68, 0.1)',
+            borderWidth: 2, pointBackgroundColor: '#EF4444',
+            pointBorderColor: '#fff', pointBorderWidth: 1, pointRadius: 4, borderDash: [5, 5]
+          }, {
+            label: '香港平均',
+            data: gr.hk,
+            borderColor: '#10B981', backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            borderWidth: 2, pointBackgroundColor: '#10B981',
+            pointBorderColor: '#fff', pointBorderWidth: 1, pointRadius: 4, borderDash: [3, 3]
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          scales: { r: { angleLines: { display: true, color: 'rgba(0,0,0,0.1)' }, suggestedMin: 0, suggestedMax: 100, ticks: { stepSize: 20, font: { size: 9 }, callback: v => v + '%' }, pointLabels: { font: { size: 12, weight: 'bold' } } } },
+          plugins: { legend: { display: false }, title: { display: true, text: gr.grade + ' 年級各範疇正確率', font: { size: 14 } } }
+        }
+      });
+    });
+
+    /* ---------- 4. 百分位分布環形圖 ---------- */
+    new Chart(document.getElementById('scoreDistributionChart'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Top 10% (超越90%)', 'Top 25% (超越75%)', 'Top 50% (超越50%)', '平均以下'],
+        datasets: [{ data: chartData.distribution, backgroundColor: ['#10B981', '#3B82F6', '#F59E0B', '#94A3B8'], borderWidth: 0 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false, cutout: '55%',
+        plugins: { legend: { position: 'right', labels: { usePointStyle: true, padding: 12, font: { size: 11 } } }, tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '人次' } } }
+      }
+    });
+
+    /* ---------- 5. 各年級百分位趨勢折線圖（null = 不顯示，避免假性下降） ---------- */
+    const gradeColors = ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#EC4899', '#14B8A6'];
+    const gradeSets = chartData.grade_trend.datasets.map((ds, i) => ({
+      label: ds.label,
+      data: ds.data,
+      borderColor: gradeColors[i % gradeColors.length],
+      backgroundColor: gradeColors[i % gradeColors.length] + '1A',
+      borderWidth: 3, tension: 0.3, fill: false, pointRadius: 5,
+      pointBackgroundColor: gradeColors[i % gradeColors.length],
+      spanGaps: false  /* 關鍵：null 值處不連線，避免顯示假性下降 */
+    }));
+    new Chart(document.getElementById('gradeTrendChart'), {
+      type: 'line',
+      data: { labels: ["複賽", "決賽"], datasets: gradeSets },
+      options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { usePointStyle: true } }, title: { display: true, text: '累積百分位趨勢（僅顯示有參賽數據的輪次）' } },
+      scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => '超越' + v + '%' } } }
+    }
+    });
+  </script>
+</body>
+
+</html>
