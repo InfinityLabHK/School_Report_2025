@@ -28,23 +28,6 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
-    .question-card {
-      border-left: 4px solid;
-      transition: all 0.3s ease;
-    }
-
-    .high-difficulty {
-      border-left-color: #EF4444;
-    }
-
-    .medium-difficulty {
-      border-left-color: #F59E0B;
-    }
-
-    .low-difficulty {
-      border-left-color: #10B981;
-    }
-
     .radar-container {
       position: relative;
       height: 400px;
@@ -85,12 +68,12 @@
 </head>
 
 <body class="bg-gray-50 min-h-screen">
-  <!-- ==================== 頁首 ==================== -->
+  <!-- ===== 頁首 ===== -->
   <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8">
     <div class="container mx-auto px-6">
       <div class="text-center">
         <h1 class="text-4xl font-bold mb-4"><i class="fa fa-trophy mr-3"></i>Practifly AI賽事校本評核分析報告</h1>
-        <h2 class="text-2xl font-semibold mb-2">香港中文大學（深圳）附屬禮文學校</h2>
+        <h2 class="text-2xl font-semibold mb-2">香港中文大學（深圳）附屬禮文學校（小學組）</h2>
         <p class="text-blue-100">2025粵港澳大灣區第四屆暨全國首屆校際數理思維精英挑戰賽</p>
       </div>
     </div>
@@ -98,7 +81,7 @@
 
   <main class="container mx-auto px-6 py-8">
 
-    <!-- ==================== 百分位排名說明 ==================== -->
+    <!-- ===== 百分位排名說明 ===== -->
     <section class="mb-8">
       <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
         <p class="text-blue-800 text-sm"><i
@@ -106,7 +89,7 @@
       </div>
     </section>
 
-    <!-- ==================== 學校概況 4卡片 ==================== -->
+    <!-- ===== 學校概況 4 卡片 ===== -->
     <section class="mb-12">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- 卡片1: 參賽人數 -->
@@ -116,7 +99,7 @@
           <p class="text-3xl font-bold text-gray-800">192</p>
           <p class="text-xs text-gray-500 mt-1">初賽 180 人、複賽 36 人、決賽 23 人</p>
         </div>
-        <!-- 卡片2: 綜合平均百分位（加權計算） -->
+        <!-- 卡片2: 加權平均百分位（真實計算） -->
         <div class="bg-white rounded-xl p-6 card-shadow text-center">
           <i class="fa fa-line-chart text-green-600 text-3xl mb-4"></i>
           <h3 class="text-gray-600 text-sm font-medium mb-2">綜合平均百分位</h3>
@@ -130,7 +113,7 @@
           <p class="text-3xl font-bold text-purple-600">20.0%</p>
           <p class="text-xs text-gray-500 mt-1">36人參加複賽</p>
         </div>
-        <!-- 卡片4: 決賽表現 -->
+        <!-- 卡片4: 決賽表現（僅有決賽數據時顯示真實數據） -->
         <div class="bg-white rounded-xl p-6 card-shadow text-center">
           <i class="fa fa-star text-yellow-600 text-3xl mb-4"></i>
           
@@ -147,10 +130,10 @@
       </div>
     </section>
 
-    <!-- ==================== 全國／香港百分位對比 ==================== -->
+    <!-- ===== 全國 / 香港百分位對比 ===== -->
     <section class="mb-12">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- 全國 -->
+        <!-- 全國對比 -->
         <div class="bg-white rounded-xl p-6 card-shadow">
           <h3 class="text-lg font-semibold text-gray-800 mb-4"><i class="fa fa-globe text-blue-600 mr-2"></i>全國百分位對比
           </h3>
@@ -166,7 +149,7 @@
             <strong>全國</strong>指本屆比賽涵蓋的12個城市、共116所學校的全部參賽學生。全國平均百分位根據各參賽學校的平均表現計算得出，確保每所學校的權重相同。
           </div>
         </div>
-        <!-- 香港 -->
+        <!-- 香港對比 -->
         <div class="bg-white rounded-xl p-6 card-shadow">
           <h3 class="text-lg font-semibold text-gray-800 mb-4"><i class="fa fa-map-marker text-red-600 mr-2"></i>香港百分位對比
           </h3>
@@ -175,23 +158,11 @@
             <div class="flex justify-between"><span>香港平均百分位：</span><span class="font-bold">47.9%</span></div>
             
             
-            <div class="p-3 rounded-lg bg-green-100 text-green-800"><i class="fa fa-arrow-up mr-2"></i>高於香港平均 16.8 個百分位</div>
+            <div class="p-3 rounded-lg bg-green-100 text-green-800"><i class="fa fa-arrow-up mr-2"></i>高於
+              16.8 個百分位</div>
             
           </div>
           <div class="chart-note mt-3">
-            <strong>香港平均</strong>指本屆所有香港及澳門地區參賽學校的平均百分位表現，反映港澳學生的整體競賽水平。
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 三輪百分位排名趨勢 ==================== -->
-    <section class="mb-12">
-      <div class="bg-white rounded-xl p-8 card-shadow">
-        <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center"><i
-            class="fa fa-bar-chart text-primary mr-3"></i>各輪次百分位排名對比</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div>
             <div style="height: 350px;"><canvas id="comparisonChart"></canvas></div>
             <div class="chart-note">
               <strong><i class="fa fa-bar-chart mr-1"></i>圖表解讀：</strong>
@@ -306,7 +277,7 @@
       </div>
     </section>
 
-    <!-- ==================== 學習範疇百分位對比（雷達圖） ==================== -->
+    <!-- ===== 學習範疇百分位對比 (小學5大範疇雷達圖) ===== -->
     <section class="mb-12">
       <div class="bg-white rounded-xl p-8 card-shadow">
         <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center"><i
@@ -314,7 +285,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div class="radar-container"><canvas id="areaRadarChart"></canvas></div>
           <div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center mb-6">
               <div class="flex items-center justify-center space-x-2">
                 <div class="w-4 h-4 bg-blue-500 rounded-full"></div><span class="text-sm text-gray-600">本校</span>
               </div>
@@ -327,15 +298,15 @@
             </div>
             <div class="chart-note green-note">
               <strong><i class="fa fa-area-chart mr-1"></i>圖表解讀：</strong>
-              此雷達圖展示本校學生在中學數學三大學習範疇（數與代數、度量圖形與空間、數據處理）的答題正確率，並與全國及香港所有參賽學校的平均正確率進行比較。<br><br>
+              此雷達圖展示本校學生在小學數學五大學習範疇（數、圖形與空間、度量、數據處理、代數）的答題正確率，並與全國及香港所有參賽學校的平均正確率進行比較。<br><br>
               <strong>如何閱讀：</strong>藍色區域（本校）向外擴張的範疇代表學校的強項；若藍色落在紅色（全國）或綠色（香港）之內，則該範疇有提升空間。
             </div>
             <div class="chart-note yellow-note mt-3">
               <strong><i class="fa fa-lightbulb mr-1"></i>教學建議：</strong>
               
-              <p class="mb-1">✓ 「數與代數」範疇正確率達 77.5%，高於全國平均（58.5%），表現突出。 學生在數與代數方面展現扎實功底，可嘗試引入更多探究式學習，如數學建模和跨學科應用問題。</p>
+              <p class="mb-1">✓ 「數」範疇正確率達 77.8%，高於全國平均（70.1%），表現突出。 學生在數的運算和應用方面基礎紮實，建議可嘗試引入更多跨範疇的數學思維題目，例如結合圖形的數字規律探索。</p>
               
-              <p class="mb-1">✓ 建議培養學生的數學論證能力，嘗試證明和反例，為高中數學做準備。</p>
+              <p class="mb-1">✓ 數感良好，可進一步培養估算策略和多位數運算的靈活性，讓學生從計算走向推理。</p>
               
               
               <p class="mb-1">→ 建議持續關注各範疇的均衡發展，可透過定期的形成性評估來追蹤學生進步。</p>
@@ -348,26 +319,151 @@
       </div>
     </section>
 
-    <!-- ==================== 學習單元正確率分析（按年級分別雷達圖） ==================== -->
+    <!-- ===== 學習範疇詳細分析 (進度條) ===== -->
+    <section class="mb-12">
+      <div class="bg-white rounded-xl p-8 card-shadow">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center"><i
+            class="fa fa-bar-chart text-accent mr-3"></i>學習範疇詳細分析（正確率）</h2>
+        <div class="chart-note mb-6">
+          <strong><i class="fa fa-info-circle mr-1"></i>分析說明：</strong>
+          以下展示本校學生在各學習範疇的答題正確率。正確率根據學生在對應題目上的實際作答結果計算。「香港」和「全國」的數值分別為香港及全國所有參賽學生在該範疇的平均正確率，用於橫向比較。正確率越高表示該範疇掌握越好。
+        </div>
+        <div class="space-y-4">
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">數</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-green-100 text-green-800">
+                  優秀
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">77.8%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 77.8%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：數能力（15個單元）</span>
+              <span>香港: 67.5% | 全國: 70.1%</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">圖形與空間</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-green-100 text-green-800">
+                  優秀
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">79.2%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 79.2%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：圖形與空間能力（10個單元）</span>
+              <span>香港: 68.5% | 全國: 66.5%</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">度量</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-blue-100 text-blue-800">
+                  良好
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">72.9%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 72.9%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：度量能力（10個單元）</span>
+              <span>香港: 63.1% | 全國: 65.8%</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">數據處理</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-green-100 text-green-800">
+                  優秀
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">75.4%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 75.4%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：數據處理能力（7個單元）</span>
+              <span>香港: 55.1% | 全國: 60.2%</span>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg p-4 card-shadow">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center space-x-3">
+                <span class="font-semibold text-gray-800">代數</span>
+                <span
+                  class="px-2 py-1 rounded-full text-xs font-medium
+                  bg-blue-100 text-blue-800">
+                  良好
+                </span>
+              </div>
+              <span class="text-lg font-bold text-primary">68.0%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 68.0%">
+              </div>
+            </div>
+            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
+              <span>涵蓋：代數能力（8個單元）</span>
+              <span>香港: 55.2% | 全國: 58.2%</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 學習單元正確率分析（按年級分別雷達圖） ===== -->
     <section class="mb-12">
       <div class="bg-white rounded-xl p-8 card-shadow">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center"><i
             class="fa fa-pie-chart text-secondary mr-3"></i>學習單元正確率分析</h2>
         <div class="chart-note mb-6">
           <strong><i class="fa fa-info-circle mr-1"></i>分析說明：</strong>
-          以下根據本校參賽的各個年級，分別展示其對應的課程學習單元和範疇正確率。每個年級的雷達圖顯示該年級學生在各學習範疇的答題正確率，並與全國及香港平均進行比較。各年級的學習單元根據香港教育局中學數學科學習內容分類。
+          以下根據本校參賽的各個年級，分別展示其對應的課程學習單元和範疇正確率。每個年級的雷達圖顯示該年級學生在各學習範疇的答題正確率，並與全國及香港平均進行比較。各年級的學習單元根據香港教育局小學數學課程闡釋分類。
         </div>
 
         
         <div class="bg-gray-50 rounded-xl p-6 mb-6 ">
           <h3 class="text-xl font-bold text-gray-800 mb-4">
-            <i class="fa fa-graduation-cap text-secondary mr-2"></i>S1 年級
-            <span class="text-sm font-normal text-gray-500 ml-2">（8 名學生）</span>
+            <i class="fa fa-graduation-cap text-secondary mr-2"></i>P1 年級
+            <span class="text-sm font-normal text-gray-500 ml-2">（53 名學生）</span>
           </h3>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- 雷達圖 -->
             <div>
-              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_S1"></canvas></div>
+              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_P1"></canvas></div>
               <div class="mt-3 grid grid-cols-3 gap-2 text-center">
                 <div class="flex items-center justify-center space-x-1">
                   <div class="w-3 h-3 bg-purple-500 rounded-full"></div><span class="text-xs text-gray-600">本校</span>
@@ -382,79 +478,73 @@
             </div>
             <!-- 單元列表 -->
             <div>
-              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>S1 年級課程學習單元</h4>
+              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>P1 年級課程學習單元</h4>
               
               <div class="mb-3">
                 <div class="flex items-center mb-1">
-                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數與代數</span>
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數</span>
                   <span
                     class="ml-2 text-xs font-bold text-green-600">正確率
-                    79.2%</span>
+                    88.5%</span>
                 </div>
                 <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">基礎計算 <strong>(68.8%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">20以內的數 <strong>(96.8%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">有向數 <strong>(68.8%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">基本加法和減法 <strong>(75.5%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">近似值與數值估算 <strong>(93.8%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">100以內的數 <strong>(87.2%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">百分法 <strong>(62.5%)</strong></span>
-                  
-                  <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">代數式 <strong>(100.0%)</strong></span>
-                  
-                  <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">一元一次方程 <strong>(100.0%)</strong></span>
-                  
-                  <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">多項式 <strong>(74.6%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">進行兩個數的加法運算 <strong>(91.3%)</strong></span>
                   
                 </div>
               </div>
               
               <div class="mb-3">
                 <div class="flex items-center mb-1">
-                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量、圖形與空間</span>
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量</span>
                   <span
                     class="ml-2 text-xs font-bold text-green-600">正確率
-                    75.5%</span>
+                    70.8%</span>
                 </div>
                 <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">立體圖形 <strong>(84.4%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">認識長度和距離的概念 <strong>(64.2%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">求積法 <strong>(59.4%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">貨幣(一) <strong>(67.9%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">角和平行線 <strong>(84.4%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">長度和距離(二) <strong>(81.0%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">直角坐標系 <strong>(74.5%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">時間(一) <strong>(70.5%)</strong></span>
                   
                 </div>
               </div>
               
               <div class="mb-3">
                 <div class="flex items-center mb-1">
-                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數據處理</span>
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">圖形與空間</span>
                   <span
                     class="ml-2 text-xs font-bold text-green-600">正確率
-                    75.0%</span>
+                    78.1%</span>
                 </div>
                 <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">數據的組織 <strong>(81.2%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">立體圖形(一) <strong>(74.5%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">數據的表達 <strong>(68.8%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">平面圖形 <strong>(82.5%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">方向和位置(一) <strong>(77.5%)</strong></span>
                   
                 </div>
               </div>
@@ -465,13 +555,13 @@
         
         <div class="bg-gray-50 rounded-xl p-6 mb-6 mt-6">
           <h3 class="text-xl font-bold text-gray-800 mb-4">
-            <i class="fa fa-graduation-cap text-secondary mr-2"></i>S2 年級
-            <span class="text-sm font-normal text-gray-500 ml-2">（7 名學生）</span>
+            <i class="fa fa-graduation-cap text-secondary mr-2"></i>P2 年級
+            <span class="text-sm font-normal text-gray-500 ml-2">（65 名學生）</span>
           </h3>
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- 雷達圖 -->
             <div>
-              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_S2"></canvas></div>
+              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_P2"></canvas></div>
               <div class="mt-3 grid grid-cols-3 gap-2 text-center">
                 <div class="flex items-center justify-center space-x-1">
                   <div class="w-3 h-3 bg-purple-500 rounded-full"></div><span class="text-xs text-gray-600">本校</span>
@@ -486,70 +576,195 @@
             </div>
             <!-- 單元列表 -->
             <div>
-              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>S2 年級課程學習單元</h4>
+              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>P2 年級課程學習單元</h4>
               
               <div class="mb-3">
                 <div class="flex items-center mb-1">
-                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數與代數</span>
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數</span>
                   <span
-                    class="ml-2 text-xs font-bold text-blue-600">正確率
-                    68.6%</span>
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    71.8%</span>
                 </div>
                 <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">有理數與無理數 <strong>(85.7%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">三位數 <strong>(63.8%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">率比及比例 <strong>(52.4%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">加法和減法(二) <strong>(46.9%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">二元一次方程 <strong>(61.9%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">基本乘法 <strong>(58.6%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">多項式 <strong>(52.4%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">四位數 <strong>(82.9%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">恆等式 <strong>(71.4%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">加法和減法(三) <strong>(69.0%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">公式 <strong>(80.0%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">基本除法 <strong>(86.7%)</strong></span>
                   
                 </div>
               </div>
               
               <div class="mb-3">
                 <div class="flex items-center mb-1">
-                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量、圖形與空間</span>
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量</span>
                   <span
-                    class="ml-2 text-xs font-bold text-blue-600">正確率
-                    61.9%</span>
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    75.5%</span>
                 </div>
                 <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">量度的誤差 <strong>(78.6%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">長度和距離(三) <strong>(65.6%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">弧長和扇形面積 <strong>(50.0%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">時間(二) <strong>(85.6%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">求積法 <strong>(71.4%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">貨幣(二) <strong>(75.4%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">圖形與空間</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    85.8%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">多邊形 <strong>(100.0%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">立體圖形(二) <strong>(55.4%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">全等三角形 <strong>(42.9%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">角 <strong>(94.6%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">相似三角形 <strong>(42.9%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">方向和位置(二) <strong>(95.4%)</strong></span>
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">畢氏定理 <strong>(64.3%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">四邊形(一) <strong>(91.9%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數據處理</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    89.2%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">三角學 <strong>(53.6%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">象形圖 <strong>(89.2%)</strong></span>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-6 mb-6 mt-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">
+            <i class="fa fa-graduation-cap text-secondary mr-2"></i>P3 年級
+            <span class="text-sm font-normal text-gray-500 ml-2">（46 名學生）</span>
+          </h3>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- 雷達圖 -->
+            <div>
+              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_P3"></canvas></div>
+              <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-purple-500 rounded-full"></div><span class="text-xs text-gray-600">本校</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-red-500 rounded-full"></div><span class="text-xs text-gray-600">全國</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div><span class="text-xs text-gray-600">香港</span>
+                </div>
+              </div>
+            </div>
+            <!-- 單元列表 -->
+            <div>
+              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>P3 年級課程學習單元</h4>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    75.4%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">五位數 <strong>(56.9%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">乘法(一) <strong>(63.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">除法(一) <strong>(86.2%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">四則運算(一) <strong>(79.7%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">分數(一) <strong>(91.2%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    72.3%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">長度和距離(四) <strong>(54.4%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">時間(三) <strong>(70.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">容量 <strong>(73.3%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">時間(四) <strong>(85.2%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">重量 <strong>(78.9%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">圖形與空間</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    71.9%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">四邊形(二) <strong>(72.9%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">三角形 <strong>(70.9%)</strong></span>
                   
                 </div>
               </div>
@@ -559,15 +774,137 @@
                   <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數據處理</span>
                   <span
                     class="ml-2 text-xs font-bold text-blue-600">正確率
-                    51.2%</span>
+                    67.7%</span>
                 </div>
                 <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">數據的組織 <strong>(54.8%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-blue-700">棒形圖(一) <strong>(67.7%)</strong></span>
+                  
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-6 mb-6 mt-6">
+          <h3 class="text-xl font-bold text-gray-800 mb-4">
+            <i class="fa fa-graduation-cap text-secondary mr-2"></i>P5 年級
+            <span class="text-sm font-normal text-gray-500 ml-2">（1 名學生）</span>
+          </h3>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- 雷達圖 -->
+            <div>
+              <div class="radar-container" style="height: 320px;"><canvas id="unitRadar_P5"></canvas></div>
+              <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-purple-500 rounded-full"></div><span class="text-xs text-gray-600">本校</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-red-500 rounded-full"></div><span class="text-xs text-gray-600">全國</span>
+                </div>
+                <div class="flex items-center justify-center space-x-1">
+                  <div class="w-3 h-3 bg-green-500 rounded-full"></div><span class="text-xs text-gray-600">香港</span>
+                </div>
+              </div>
+            </div>
+            <!-- 單元列表 -->
+            <div>
+              <h4 class="font-semibold text-gray-700 mb-3"><i class="fa fa-book mr-1"></i>P5 年級課程學習單元</h4>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    100.0%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
                   
                   <span
-                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-orange-600">數據的表達 <strong>(47.6%)</strong></span>
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">多位數 <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">分數(三) <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">分數(四) <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">小數(三) <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">分數(五) <strong>(100.0%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">度量</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    100.0%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">面積(二) <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">體積(一) <strong>(100.0%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">圖形與空間</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    100.0%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">圓 <strong>(100.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">立體圖形(三) <strong>(100.0%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">數據處理</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    100.0%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">棒形圖(三) <strong>(100.0%)</strong></span>
+                  
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <div class="flex items-center mb-1">
+                  <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">代數</span>
+                  <span
+                    class="ml-2 text-xs font-bold text-green-600">正確率
+                    87.5%</span>
+                </div>
+                <div class="flex flex-wrap gap-1 ml-1">
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">代數的初步認識 <strong>(75.0%)</strong></span>
+                  
+                  <span
+                    class="px-2 py-0.5 bg-white rounded text-xs card-shadow text-green-700">簡易方程(一) <strong>(100.0%)</strong></span>
                   
                 </div>
               </div>
@@ -581,70 +918,7 @@
       </div>
     </section>
 
-    <!-- ==================== 學習範疇詳細分析（進度條） ==================== -->
-    <section class="mb-12">
-      <div class="bg-white rounded-xl p-8 card-shadow">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center"><i
-            class="fa fa-bar-chart text-accent mr-3"></i>學習範疇詳細分析（正確率）</h2>
-        <div class="chart-note mb-6">
-          <strong><i class="fa fa-info-circle mr-1"></i>分析說明：</strong>
-          以下展示本校學生在各學習範疇的答題正確率。正確率根據學生在對應題目上的實際作答結果計算。「香港」和「全國」的數值分別為香港及全國所有參賽學生在該範疇的平均正確率，用於橫向比較。
-        </div>
-        <div class="space-y-4">
-          
-          <div class="bg-white rounded-lg p-4 card-shadow">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center space-x-3"><span class="font-semibold text-gray-800">數與代數</span><span
-                  class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">優秀</span>
-              </div>
-              <span class="text-lg font-bold text-primary">77.5%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 77.5%">
-              </div>
-            </div>
-            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
-              <span>涵蓋：數與代數能力</span><span>香港: 51.4% | 全國: 58.5%</span>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg p-4 card-shadow">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center space-x-3"><span class="font-semibold text-gray-800">度量、圖形與空間</span><span
-                  class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">優秀</span>
-              </div>
-              <span class="text-lg font-bold text-primary">75.9%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 75.9%">
-              </div>
-            </div>
-            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
-              <span>涵蓋：度量、圖形與空間能力</span><span>香港: 45.7% | 全國: 54.2%</span>
-            </div>
-          </div>
-          
-          <div class="bg-white rounded-lg p-4 card-shadow">
-            <div class="flex items-center justify-between mb-2">
-              <div class="flex items-center space-x-3"><span class="font-semibold text-gray-800">數據處理</span><span
-                  class="px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">優秀</span>
-              </div>
-              <span class="text-lg font-bold text-primary">70.3%</span>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2">
-              <div class="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full" style="width: 70.3%">
-              </div>
-            </div>
-            <div class="flex items-center justify-between mt-2 text-sm text-gray-600">
-              <span>涵蓋：數據處理能力</span><span>香港: 38.0% | 全國: 46.6%</span>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== 百分位分布 + 各年級趨勢 ==================== -->
+    <!-- ===== 百分位分布 + 各年級趨勢 ===== -->
     <section class="mb-12">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- 百分位分布 -->
@@ -673,7 +947,7 @@
       </div>
     </section>
 
-    <!-- ==================== 各輪次學生百分位排名 ==================== -->
+    <!-- ===== 各輪次學生百分位排名 ===== -->
     <section class="mb-12">
       <div class="bg-white rounded-xl p-8 card-shadow">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center"><i
@@ -683,7 +957,8 @@
           以下列出本校在各輪次的所有參賽學生。百分位排名表示該學生超越了全國初賽多少百分比的參賽者。複賽和決賽的百分位是累積排名（映射到全部初賽3686名參賽者中），因此能晉級並取得高百分位更加難能可貴。
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- 初賽 -->
+          
+          
           
           <div class="border rounded-xl overflow-hidden">
             <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 text-center">
@@ -719,7 +994,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈天则</td>
+                    <td class="p-2 pl-6"> 陈天则</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -727,7 +1002,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈昱帆</td>
+                    <td class="p-2 pl-6"> 陈昱帆</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -735,7 +1010,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张炫栩</td>
+                    <td class="p-2 pl-6"> 张炫栩</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -743,7 +1018,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘佩轩</td>
+                    <td class="p-2 pl-6"> 刘佩轩</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -751,7 +1026,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">衣廖妍心</td>
+                    <td class="p-2 pl-6"> 衣廖妍心</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -759,7 +1034,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">彭炜桐</td>
+                    <td class="p-2 pl-6"> 彭炜桐</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -767,7 +1042,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄可沁</td>
+                    <td class="p-2 pl-6"> 黄可沁</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -775,7 +1050,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">赵一萌</td>
+                    <td class="p-2 pl-6"> 赵一萌</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -783,7 +1058,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">欧阳睿</td>
+                    <td class="p-2 pl-6"> 欧阳睿</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -791,7 +1066,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈灿熙</td>
+                    <td class="p-2 pl-6"> 陈灿熙</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -799,7 +1074,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡旸熊峰</td>
+                    <td class="p-2 pl-6"> 胡旸熊峰</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -807,7 +1082,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘宇宸</td>
+                    <td class="p-2 pl-6"> 刘宇宸</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -815,7 +1090,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨子诺</td>
+                    <td class="p-2 pl-6"> 杨子诺</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -823,7 +1098,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张皓宇</td>
+                    <td class="p-2 pl-6"> 张皓宇</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -831,7 +1106,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">唐子轩</td>
+                    <td class="p-2 pl-6"> 唐子轩</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -839,7 +1114,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴昕原</td>
+                    <td class="p-2 pl-6"> 吴昕原</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -847,7 +1122,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈姝安</td>
+                    <td class="p-2 pl-6"> 陈姝安</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -855,7 +1130,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">周毅涵</td>
+                    <td class="p-2 pl-6"> 周毅涵</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -863,7 +1138,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘芯仪</td>
+                    <td class="p-2 pl-6"> 刘芯仪</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -871,7 +1146,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">马浚铭</td>
+                    <td class="p-2 pl-6"> 马浚铭</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -879,7 +1154,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">徐泽宇</td>
+                    <td class="p-2 pl-6"> 徐泽宇</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -887,7 +1162,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">周骏</td>
+                    <td class="p-2 pl-6"> 周骏</td>
                     <td class="text-center text-gray-500">P5</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -895,7 +1170,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">姜宇瑞</td>
+                    <td class="p-2 pl-6"> 姜宇瑞</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -903,7 +1178,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">欧阳索岩</td>
+                    <td class="p-2 pl-6"> 欧阳索岩</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -911,7 +1186,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">林允恬</td>
+                    <td class="p-2 pl-6"> 林允恬</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -919,7 +1194,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄锦鸿</td>
+                    <td class="p-2 pl-6"> 黄锦鸿</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -927,7 +1202,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">过瑾怀</td>
+                    <td class="p-2 pl-6"> 过瑾怀</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -935,7 +1210,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄子尧</td>
+                    <td class="p-2 pl-6"> 黄子尧</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -943,7 +1218,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">徐海润</td>
+                    <td class="p-2 pl-6"> 徐海润</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -951,7 +1226,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">王势坤</td>
+                    <td class="p-2 pl-6"> 王势坤</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -959,7 +1234,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨峻凯</td>
+                    <td class="p-2 pl-6"> 杨峻凯</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -967,7 +1242,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">申承瑾</td>
+                    <td class="p-2 pl-6"> 申承瑾</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -975,7 +1250,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈思涵</td>
+                    <td class="p-2 pl-6"> 陈思涵</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -983,7 +1258,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">何子熙</td>
+                    <td class="p-2 pl-6"> 何子熙</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -991,7 +1266,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴政轩</td>
+                    <td class="p-2 pl-6"> 吴政轩</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -999,7 +1274,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">沈鹿希</td>
+                    <td class="p-2 pl-6"> 沈鹿希</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1007,7 +1282,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">庞圳涛</td>
+                    <td class="p-2 pl-6"> 庞圳涛</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1015,7 +1290,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">肖致瀚</td>
+                    <td class="p-2 pl-6"> 肖致瀚</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1023,7 +1298,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">王乐辰</td>
+                    <td class="p-2 pl-6"> 王乐辰</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1031,7 +1306,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈楚涵</td>
+                    <td class="p-2 pl-6"> 陈楚涵</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1039,7 +1314,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄研熙</td>
+                    <td class="p-2 pl-6"> 黄研熙</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1047,7 +1322,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">蒋扬甄</td>
+                    <td class="p-2 pl-6"> 蒋扬甄</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1055,7 +1330,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张坤煌</td>
+                    <td class="p-2 pl-6"> 张坤煌</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1063,7 +1338,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">林煜轩</td>
+                    <td class="p-2 pl-6"> 林煜轩</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1071,7 +1346,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">何志芃</td>
+                    <td class="p-2 pl-6"> 何志芃</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1079,7 +1354,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">郭梓扬</td>
+                    <td class="p-2 pl-6"> 郭梓扬</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1087,7 +1362,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴加煌</td>
+                    <td class="p-2 pl-6"> 吴加煌</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1095,7 +1370,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">赖炜杰</td>
+                    <td class="p-2 pl-6"> 赖炜杰</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1103,7 +1378,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">蔡睿聪</td>
+                    <td class="p-2 pl-6"> 蔡睿聪</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1111,7 +1386,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杜彦甫</td>
+                    <td class="p-2 pl-6"> 杜彦甫</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1119,7 +1394,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张鑫润</td>
+                    <td class="p-2 pl-6"> 张鑫润</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1127,7 +1402,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">倪子航</td>
+                    <td class="p-2 pl-6"> 倪子航</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1135,7 +1410,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">何子祺</td>
+                    <td class="p-2 pl-6"> 何子祺</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1143,7 +1418,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张舒涵</td>
+                    <td class="p-2 pl-6"> 张舒涵</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1151,7 +1426,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李沂峰</td>
+                    <td class="p-2 pl-6"> 李沂峰</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1159,7 +1434,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">罗沐辰</td>
+                    <td class="p-2 pl-6"> 罗沐辰</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1167,7 +1442,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">王予德</td>
+                    <td class="p-2 pl-6"> 王予德</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1175,7 +1450,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">廖晋杰</td>
+                    <td class="p-2 pl-6"> 廖晋杰</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1183,7 +1458,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴竞</td>
+                    <td class="p-2 pl-6"> 吴竞</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1191,7 +1466,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">谢昱晨</td>
+                    <td class="p-2 pl-6"> 谢昱晨</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1199,7 +1474,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">周夕涵</td>
+                    <td class="p-2 pl-6"> 周夕涵</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1207,7 +1482,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘芷妃</td>
+                    <td class="p-2 pl-6"> 刘芷妃</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1215,7 +1490,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">郑祺霖</td>
+                    <td class="p-2 pl-6"> 郑祺霖</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1223,7 +1498,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">段胤谦</td>
+                    <td class="p-2 pl-6"> 段胤谦</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1231,7 +1506,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">万熙睿</td>
+                    <td class="p-2 pl-6"> 万熙睿</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1239,7 +1514,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">林沁汐</td>
+                    <td class="p-2 pl-6"> 林沁汐</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1247,7 +1522,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈雨潼</td>
+                    <td class="p-2 pl-6"> 陈雨潼</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1255,7 +1530,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">佘广宇</td>
+                    <td class="p-2 pl-6"> 佘广宇</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1263,7 +1538,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李宇恩</td>
+                    <td class="p-2 pl-6"> 李宇恩</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1271,7 +1546,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">曾弈衡</td>
+                    <td class="p-2 pl-6"> 曾弈衡</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1279,7 +1554,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">明资羡</td>
+                    <td class="p-2 pl-6"> 明资羡</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1287,7 +1562,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李宇柠</td>
+                    <td class="p-2 pl-6"> 李宇柠</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1295,7 +1570,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘昱</td>
+                    <td class="p-2 pl-6"> 刘昱</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1303,7 +1578,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄芊语</td>
+                    <td class="p-2 pl-6"> 黄芊语</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1311,7 +1586,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">朱珊睿</td>
+                    <td class="p-2 pl-6"> 朱珊睿</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1319,7 +1594,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李嘉语</td>
+                    <td class="p-2 pl-6"> 李嘉语</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1327,7 +1602,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">曾元庆</td>
+                    <td class="p-2 pl-6"> 曾元庆</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1335,7 +1610,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨语涵</td>
+                    <td class="p-2 pl-6"> 杨语涵</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1343,7 +1618,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">谭翊鸿</td>
+                    <td class="p-2 pl-6"> 谭翊鸿</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1351,7 +1626,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈泓羽</td>
+                    <td class="p-2 pl-6"> 陈泓羽</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1359,7 +1634,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨家和</td>
+                    <td class="p-2 pl-6"> 杨家和</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1367,7 +1642,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">朱国霖</td>
+                    <td class="p-2 pl-6"> 朱国霖</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -1375,7 +1650,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">邓毓霏</td>
+                    <td class="p-2 pl-6"> 邓毓霏</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1383,7 +1658,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">覃子书</td>
+                    <td class="p-2 pl-6"> 覃子书</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1391,7 +1666,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">姬郡瑶</td>
+                    <td class="p-2 pl-6"> 姬郡瑶</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1399,7 +1674,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">姚瑞诗</td>
+                    <td class="p-2 pl-6"> 姚瑞诗</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1407,7 +1682,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">何沐庭</td>
+                    <td class="p-2 pl-6"> 何沐庭</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1415,7 +1690,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李桂森</td>
+                    <td class="p-2 pl-6"> 李桂森</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1423,7 +1698,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吕峥</td>
+                    <td class="p-2 pl-6"> 吕峥</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1431,7 +1706,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">詹馥漫</td>
+                    <td class="p-2 pl-6"> 詹馥漫</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1439,7 +1714,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">徐弘毅</td>
+                    <td class="p-2 pl-6"> 徐弘毅</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1447,7 +1722,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">姜烨萱</td>
+                    <td class="p-2 pl-6"> 姜烨萱</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1455,7 +1730,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">曾奕杰</td>
+                    <td class="p-2 pl-6"> 曾奕杰</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1463,7 +1738,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">詹浩屿</td>
+                    <td class="p-2 pl-6"> 詹浩屿</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1471,7 +1746,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">何瀚霖</td>
+                    <td class="p-2 pl-6"> 何瀚霖</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1479,7 +1754,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">高嘉玮</td>
+                    <td class="p-2 pl-6"> 高嘉玮</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1487,7 +1762,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈元章</td>
+                    <td class="p-2 pl-6"> 陈元章</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1495,7 +1770,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">谭艺洋</td>
+                    <td class="p-2 pl-6"> 谭艺洋</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1503,7 +1778,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李想</td>
+                    <td class="p-2 pl-6"> 李想</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1511,7 +1786,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘承锴</td>
+                    <td class="p-2 pl-6"> 刘承锴</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1519,7 +1794,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张雅菡</td>
+                    <td class="p-2 pl-6"> 张雅菡</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1527,7 +1802,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李筠庭</td>
+                    <td class="p-2 pl-6"> 李筠庭</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1535,7 +1810,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">汪婧瑄</td>
+                    <td class="p-2 pl-6"> 汪婧瑄</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1543,7 +1818,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">曾梓玥</td>
+                    <td class="p-2 pl-6"> 曾梓玥</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1551,7 +1826,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">肖锦妍</td>
+                    <td class="p-2 pl-6"> 肖锦妍</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -1559,578 +1834,578 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">沈煜桓</td>
+                    <td class="p-2 pl-6"> 沈煜桓</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越38.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">曾梓东</td>
+                    <td class="p-2 pl-6"> 曾梓东</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越38.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">颜瑞伊</td>
+                    <td class="p-2 pl-6"> 颜瑞伊</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越38.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">徐子辰</td>
+                    <td class="p-2 pl-6"> 徐子辰</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越38.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">林木深</td>
+                    <td class="p-2 pl-6"> 林木深</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越38.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李知欣</td>
+                    <td class="p-2 pl-6"> 李知欣</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越38.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">卢盈霏</td>
+                    <td class="p-2 pl-6"> 卢盈霏</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越38.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘伊初</td>
+                    <td class="p-2 pl-6"> 刘伊初</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越37.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张恩硕</td>
+                    <td class="p-2 pl-6"> 张恩硕</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越37.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈煜樽</td>
+                    <td class="p-2 pl-6"> 陈煜樽</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越37.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘栩陌</td>
+                    <td class="p-2 pl-6"> 刘栩陌</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越36.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">钟一菲</td>
+                    <td class="p-2 pl-6"> 钟一菲</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越36.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴逸晨</td>
+                    <td class="p-2 pl-6"> 吴逸晨</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越34.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄垲为</td>
+                    <td class="p-2 pl-6"> 黄垲为</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越34.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张曦</td>
+                    <td class="p-2 pl-6"> 张曦</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越34.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">周映妤</td>
+                    <td class="p-2 pl-6"> 周映妤</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越31.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">方佳锐</td>
+                    <td class="p-2 pl-6"> 方佳锐</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越31.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄歆瑶</td>
+                    <td class="p-2 pl-6"> 黄歆瑶</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越31.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">利雨娥</td>
+                    <td class="p-2 pl-6"> 利雨娥</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越31.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">魏敬雯</td>
+                    <td class="p-2 pl-6"> 魏敬雯</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越31.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李睿宸</td>
+                    <td class="p-2 pl-6"> 李睿宸</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越31.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">赵思涵</td>
+                    <td class="p-2 pl-6"> 赵思涵</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越30.6%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴政涛</td>
+                    <td class="p-2 pl-6"> 吴政涛</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越30.6%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李宥泽</td>
+                    <td class="p-2 pl-6"> 李宥泽</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越30.6%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">云柱贤</td>
+                    <td class="p-2 pl-6"> 云柱贤</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越29.4%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">康烯颖</td>
+                    <td class="p-2 pl-6"> 康烯颖</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越26.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄晟</td>
+                    <td class="p-2 pl-6"> 黄晟</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越26.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">旷沫槿</td>
+                    <td class="p-2 pl-6"> 旷沫槿</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越26.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">郑墨可</td>
+                    <td class="p-2 pl-6"> 郑墨可</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越24.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张语柔</td>
+                    <td class="p-2 pl-6"> 张语柔</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越24.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨竣淯</td>
+                    <td class="p-2 pl-6"> 杨竣淯</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越24.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄彬烨</td>
+                    <td class="p-2 pl-6"> 黄彬烨</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越24.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">林靖轩</td>
+                    <td class="p-2 pl-6"> 林靖轩</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越24.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">侯抒泽</td>
+                    <td class="p-2 pl-6"> 侯抒泽</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越24.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡茵绮</td>
+                    <td class="p-2 pl-6"> 胡茵绮</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越24.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李伟斌</td>
+                    <td class="p-2 pl-6"> 李伟斌</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越24.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">卜鸣泽</td>
+                    <td class="p-2 pl-6"> 卜鸣泽</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越23.8%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">卓睿航</td>
+                    <td class="p-2 pl-6"> 卓睿航</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越23.4%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">秦伊城</td>
+                    <td class="p-2 pl-6"> 秦伊城</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越21.4%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">朱锦妍</td>
+                    <td class="p-2 pl-6"> 朱锦妍</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越19.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘淏天</td>
+                    <td class="p-2 pl-6"> 刘淏天</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越18.5%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">周语萱</td>
+                    <td class="p-2 pl-6"> 周语萱</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越18.5%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">邓嘉豪</td>
+                    <td class="p-2 pl-6"> 邓嘉豪</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越18.5%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">温皓源</td>
+                    <td class="p-2 pl-6"> 温皓源</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越18.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">田多乐</td>
+                    <td class="p-2 pl-6"> 田多乐</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越15.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘锦良</td>
+                    <td class="p-2 pl-6"> 刘锦良</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越15.5%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴敏瑜</td>
+                    <td class="p-2 pl-6"> 吴敏瑜</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越15.1%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张阳</td>
+                    <td class="p-2 pl-6"> 张阳</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越13.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">祝艺垚</td>
+                    <td class="p-2 pl-6"> 祝艺垚</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越13.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">潘建桥</td>
+                    <td class="p-2 pl-6"> 潘建桥</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越13.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">郑墨宸</td>
+                    <td class="p-2 pl-6"> 郑墨宸</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越13.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">程泽宇</td>
+                    <td class="p-2 pl-6"> 程泽宇</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越11.3%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘谦宇</td>
+                    <td class="p-2 pl-6"> 刘谦宇</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越11.3%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">何舒缇</td>
+                    <td class="p-2 pl-6"> 何舒缇</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越11.3%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">曹晓琳</td>
+                    <td class="p-2 pl-6"> 曹晓琳</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越9.9%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张凯晋</td>
+                    <td class="p-2 pl-6"> 张凯晋</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越9.9%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴桐</td>
+                    <td class="p-2 pl-6"> 吴桐</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越9.9%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张子岳</td>
+                    <td class="p-2 pl-6"> 张子岳</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越9.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">成思霖</td>
+                    <td class="p-2 pl-6"> 成思霖</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越9.4%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张露文</td>
+                    <td class="p-2 pl-6"> 张露文</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越9.1%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李宥希</td>
+                    <td class="p-2 pl-6"> 李宥希</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越9.1%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡辰舒</td>
+                    <td class="p-2 pl-6"> 胡辰舒</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越7.9%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">林煜航</td>
+                    <td class="p-2 pl-6"> 林煜航</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越7.9%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">曲瑞林</td>
+                    <td class="p-2 pl-6"> 曲瑞林</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越7.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李潇然</td>
+                    <td class="p-2 pl-6"> 李潇然</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越7.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘梦潼</td>
+                    <td class="p-2 pl-6"> 刘梦潼</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越6.5%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">程铖浩</td>
+                    <td class="p-2 pl-6"> 程铖浩</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越6.4%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘其乐</td>
+                    <td class="p-2 pl-6"> 刘其乐</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越5.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">龙城逸</td>
+                    <td class="p-2 pl-6"> 龙城逸</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越3.8%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">郑棋元</td>
+                    <td class="p-2 pl-6"> 郑棋元</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越2.8%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李卓阳</td>
+                    <td class="p-2 pl-6"> 李卓阳</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越1.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">史皓元</td>
+                    <td class="p-2 pl-6"> 史皓元</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越0.4%</td>
                     </tr>
                     
@@ -2139,8 +2414,7 @@
             </div>
           </div>
           
-
-          <!-- 複賽 -->
+          
           
           <div class="border rounded-xl overflow-hidden">
             <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-4 text-center">
@@ -2176,7 +2450,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张皓宇</td>
+                    <td class="p-2 pl-6"> 张皓宇</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2184,7 +2458,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">申承瑾</td>
+                    <td class="p-2 pl-6"> 申承瑾</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2192,7 +2466,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈思涵</td>
+                    <td class="p-2 pl-6"> 陈思涵</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2200,7 +2474,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">衣廖妍心</td>
+                    <td class="p-2 pl-6"> 衣廖妍心</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2208,7 +2482,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">过瑾怀</td>
+                    <td class="p-2 pl-6"> 过瑾怀</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2216,7 +2490,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨峻凯</td>
+                    <td class="p-2 pl-6"> 杨峻凯</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2224,7 +2498,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡释</td>
+                    <td class="p-2 pl-6"> 胡释</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2232,7 +2506,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">马浚铭</td>
+                    <td class="p-2 pl-6"> 马浚铭</td>
                     <td class="text-center text-gray-500">S2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2240,7 +2514,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈昱帆</td>
+                    <td class="p-2 pl-6"> 陈昱帆</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2248,7 +2522,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">徐海润</td>
+                    <td class="p-2 pl-6"> 徐海润</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2256,7 +2530,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">唐子軒</td>
+                    <td class="p-2 pl-6"> 唐子軒</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2264,7 +2538,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈楚涵</td>
+                    <td class="p-2 pl-6"> 陈楚涵</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2272,7 +2546,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡旸熊峰</td>
+                    <td class="p-2 pl-6"> 胡旸熊峰</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2280,7 +2554,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">詹馥漫</td>
+                    <td class="p-2 pl-6"> 詹馥漫</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2288,7 +2562,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">彭炜桐</td>
+                    <td class="p-2 pl-6"> 彭炜桐</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2296,7 +2570,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘芯仪</td>
+                    <td class="p-2 pl-6"> 刘芯仪</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2304,7 +2578,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨语涵</td>
+                    <td class="p-2 pl-6"> 杨语涵</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2312,7 +2586,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">郑祺霖</td>
+                    <td class="p-2 pl-6"> 郑祺霖</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2320,7 +2594,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">谭翊鸿</td>
+                    <td class="p-2 pl-6"> 谭翊鸿</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2328,7 +2602,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈煜樽</td>
+                    <td class="p-2 pl-6"> 陈煜樽</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2336,7 +2610,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">蒋扬甄</td>
+                    <td class="p-2 pl-6"> 蒋扬甄</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -2344,7 +2618,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李宇恩</td>
+                    <td class="p-2 pl-6"> 李宇恩</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -2352,90 +2626,90 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吕峥</td>
+                    <td class="p-2 pl-6"> 吕峥</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越39.4%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡茵绮</td>
+                    <td class="p-2 pl-6"> 胡茵绮</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越37.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李衞斌</td>
+                    <td class="p-2 pl-6"> 李衞斌</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越37.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄彬烨</td>
+                    <td class="p-2 pl-6"> 黄彬烨</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越34.2%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨竣淯</td>
+                    <td class="p-2 pl-6"> 杨竣淯</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越30.8%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘伊初</td>
+                    <td class="p-2 pl-6"> 刘伊初</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越25.7%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">徐子辰</td>
+                    <td class="p-2 pl-6"> 徐子辰</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越23.6%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡辰舒</td>
+                    <td class="p-2 pl-6"> 胡辰舒</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越16.4%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴竞</td>
+                    <td class="p-2 pl-6"> 吴竞</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越10.5%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">卓睿航</td>
+                    <td class="p-2 pl-6"> 卓睿航</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越0.0%</td>
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈灿熙</td>
+                    <td class="p-2 pl-6"> 陈灿熙</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
-                      class="text-right p-2 font-bold text-orange-500">
+                      class="text-right p-2 font-bold text-yellow-600">
                       超越0.0%</td>
                     </tr>
                     
@@ -2444,8 +2718,7 @@
             </div>
           </div>
           
-
-          <!-- 決賽 -->
+          
           
           <div class="border rounded-xl overflow-hidden">
             <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-4 text-center">
@@ -2481,7 +2754,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡旸熊峰</td>
+                    <td class="p-2 pl-6"> 胡旸熊峰</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2489,7 +2762,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈昱帆</td>
+                    <td class="p-2 pl-6"> 陈昱帆</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2497,7 +2770,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">彭炜桐</td>
+                    <td class="p-2 pl-6"> 彭炜桐</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2505,7 +2778,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡释</td>
+                    <td class="p-2 pl-6"> 胡释</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2513,7 +2786,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">过瑾怀</td>
+                    <td class="p-2 pl-6"> 过瑾怀</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2521,7 +2794,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈天则</td>
+                    <td class="p-2 pl-6"> 陈天则</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2529,7 +2802,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">刘芯仪</td>
+                    <td class="p-2 pl-6"> 刘芯仪</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2537,7 +2810,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">谭翊鸿</td>
+                    <td class="p-2 pl-6"> 谭翊鸿</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2545,7 +2818,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">张皓宇</td>
+                    <td class="p-2 pl-6"> 张皓宇</td>
                     <td class="text-center text-gray-500">S1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2553,7 +2826,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨峻凯</td>
+                    <td class="p-2 pl-6"> 杨峻凯</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2561,7 +2834,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">詹馥漫</td>
+                    <td class="p-2 pl-6"> 詹馥漫</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2569,7 +2842,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">杨语涵</td>
+                    <td class="p-2 pl-6"> 杨语涵</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2577,7 +2850,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">胡茵绮</td>
+                    <td class="p-2 pl-6"> 胡茵绮</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2585,7 +2858,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">衣廖妍心</td>
+                    <td class="p-2 pl-6"> 衣廖妍心</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2593,7 +2866,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈楚涵</td>
+                    <td class="p-2 pl-6"> 陈楚涵</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2601,7 +2874,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">吴竞</td>
+                    <td class="p-2 pl-6"> 吴竞</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-green-600">
@@ -2609,7 +2882,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">黄彬烨</td>
+                    <td class="p-2 pl-6"> 黄彬烨</td>
                     <td class="text-center text-gray-500">P2</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2617,7 +2890,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">李宇恩</td>
+                    <td class="p-2 pl-6"> 李宇恩</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2625,7 +2898,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">陈煜樽</td>
+                    <td class="p-2 pl-6"> 陈煜樽</td>
                     <td class="text-center text-gray-500">P1</td>
                     <td
                       class="text-right p-2 font-bold text-blue-600">
@@ -2633,7 +2906,7 @@
                     </tr>
                     
                   <tr>
-                    <td class="p-2 pl-6">卓睿航</td>
+                    <td class="p-2 pl-6"> 卓睿航</td>
                     <td class="text-center text-gray-500">P3</td>
                     <td
                       class="text-right p-2 font-bold text-yellow-600">
@@ -2645,59 +2918,55 @@
             </div>
           </div>
           
+          
         </div>
       </div>
     </section>
 
-    <!-- ==================== 年級分析卡片 ==================== -->
+    <!-- ===== 年級分析 ===== -->
     <section class="mb-12">
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         
-        
-        <div class="bg-white rounded-xl p-6 card-shadow border-l-4 border-blue-500">
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-blue-500">
           <h4 class="font-bold text-gray-800 mb-2">P1 累積百分位</h4>
-          <p class="text-3xl font-bold text-blue-600">超越64.0%</p>
+          <p class="text-2xl font-bold text-blue-600">超越64.0%</p>
           <p class="text-sm text-gray-500 mt-2">上升 ↑</p>
           <p class="text-xs text-green-600 mt-1"></p>
         </div>
         
-        
-        <div class="bg-white rounded-xl p-6 card-shadow border-l-4 border-green-500">
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-green-500">
           <h4 class="font-bold text-gray-800 mb-2">P2 累積百分位</h4>
-          <p class="text-3xl font-bold text-green-600">超越62.2%</p>
+          <p class="text-2xl font-bold text-green-600">超越62.2%</p>
           <p class="text-sm text-gray-500 mt-2">上升 ↑</p>
           <p class="text-xs text-green-600 mt-1"></p>
         </div>
         
-        
-        <div class="bg-white rounded-xl p-6 card-shadow border-l-4 border-purple-500">
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-purple-500">
           <h4 class="font-bold text-gray-800 mb-2">P3 累積百分位</h4>
-          <p class="text-3xl font-bold text-purple-600">超越41.9%</p>
+          <p class="text-2xl font-bold text-purple-600">超越41.9%</p>
           <p class="text-sm text-gray-500 mt-2">上升 ↑</p>
           <p class="text-xs text-green-600 mt-1"></p>
         </div>
         
-        
-        <div class="bg-white rounded-xl p-6 card-shadow border-l-4 border-orange-500">
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-orange-500">
           <h4 class="font-bold text-gray-800 mb-2">P5 累積百分位</h4>
-          <p class="text-3xl font-bold text-orange-600">超越78.8%</p>
+          <p class="text-2xl font-bold text-orange-600">超越78.8%</p>
           <p class="text-sm text-gray-500 mt-2">共參加1輪</p>
           <p class="text-xs text-green-600 mt-1"></p>
         </div>
         
-        
-        <div class="bg-white rounded-xl p-6 card-shadow border-l-4 border-pink-500">
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-pink-500">
           <h4 class="font-bold text-gray-800 mb-2">S1 累積百分位</h4>
-          <p class="text-3xl font-bold text-pink-600">超越90.3%</p>
+          <p class="text-2xl font-bold text-pink-600">超越90.3%</p>
           <p class="text-sm text-gray-500 mt-2">上升 ↑</p>
           <p class="text-xs text-green-600 mt-1"></p>
         </div>
         
-        
-        <div class="bg-white rounded-xl p-6 card-shadow border-l-4 border-teal-500">
+        <div class="bg-white rounded-xl p-5 card-shadow border-l-4 border-teal-500">
           <h4 class="font-bold text-gray-800 mb-2">S2 累積百分位</h4>
-          <p class="text-3xl font-bold text-teal-600">超越79.5%</p>
+          <p class="text-2xl font-bold text-teal-600">超越79.5%</p>
           <p class="text-sm text-gray-500 mt-2">上升 ↑</p>
           <p class="text-xs text-green-600 mt-1"></p>
         </div>
@@ -2705,7 +2974,7 @@
       </div>
     </section>
 
-    <!-- ==================== 個性化教學建議 ==================== -->
+    <!-- ===== 個性化教學建議 ===== -->
     <section class="mb-12">
       <div class="bg-white rounded-xl p-8 card-shadow">
         <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center"><i
@@ -2719,17 +2988,25 @@
             <h3 class="text-xl font-bold text-green-800 mb-4"><i class="fa fa-star mr-2"></i>亮點與優勢</h3>
             <ul class="space-y-3 text-gray-700">
               
-              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「數與代數」範疇正確率達 77.5%，高於全國平均（58.5%），表現突出。 學生在數與代數方面展現扎實功底，可嘗試引入更多探究式學習，如數學建模和跨學科應用問題。</li>
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「數」範疇正確率達 77.8%，高於全國平均（70.1%），表現突出。 學生在數的運算和應用方面基礎紮實，建議可嘗試引入更多跨範疇的數學思維題目，例如結合圖形的數字規律探索。</li>
               
-              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>建議培養學生的數學論證能力，嘗試證明和反例，為高中數學做準備。</li>
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>數感良好，可進一步培養估算策略和多位數運算的靈活性，讓學生從計算走向推理。</li>
               
-              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「度量、圖形與空間」範疇正確率達 75.9%，高於全國平均（54.2%），表現突出。 學生的幾何直覺和空間想像力出色，建議引入坐標幾何和向量的入門概念，拓展數學視野。</li>
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「圖形與空間」範疇正確率達 79.2%，高於全國平均（66.5%），表現突出。 學生在空間感和圖形辨識方面表現突出，可進一步引入立體圖形的展開圖和三視圖等進階內容。</li>
               
-              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>可嘗試結合科技工具進行幾何探究，如使用GeoGebra驗證幾何定理。</li>
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>建議利用實物操作和電子工具（如GeoGebra）讓學生探索圖形的對稱、旋轉和平移變換。</li>
               
-              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「數據處理」範疇正確率達 70.3%，高於全國平均（46.6%），表現突出。 統計分析能力出色，可引入更高階的概念如標準差、相關性分析，並嘗試用電子表格處理真實數據。</li>
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「度量」範疇正確率達 72.9%，高於全國平均（65.8%），表現突出。 學生對度量單位的轉換和應用掌握出色，可引入更多需要綜合運用多種度量單位的實際問題。</li>
               
-              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>建議培養批判性思維，讓學生分析日常生活中的統計數據（如新聞報導中的圖表），識別可能的偏見。</li>
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>建議延伸至面積和體積的進階計算，結合實際生活中的估算任務。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「數據處理」範疇正確率達 75.4%，高於全國平均（60.2%），表現突出。 學生在數據解讀和圖表分析方面表現優異，可嘗試引入更複雜的統計概念，如平均數的應用和數據的比較分析。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>建議讓學生嘗試自行設計問卷和收集數據，體驗完整的統計探究流程。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>「代數」範疇正確率達 68.0%，高於全國平均（58.2%），表現突出。 代數思維能力突出，學生能靈活運用符號和公式解決問題。建議進一步培養歸納法思維和規律推廣能力。</li>
+              
+              <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>可嘗試簡單的函數思維訓練，為中學代數學習打好基礎。</li>
               
               <li class="flex items-start"><span class="text-green-500 mr-2">✓</span>學校有相當比例的學生處於高百分位段，說明學校在數學尖子培養方面成效顯著。</li>
               
@@ -2760,7 +3037,7 @@
     </section>
   </main>
 
-  <!-- ==================== 頁尾 ==================== -->
+  <!-- ===== 頁尾 ===== -->
   <footer class="bg-gray-800 text-white py-6">
     <div class="container mx-auto px-6 text-center">
       <p class="text-gray-400">© 2025 大灣區數學思維精英挑戰賽 | Practifly AI Platform</p>
@@ -2768,11 +3045,9 @@
     </div>
   </footer>
 
-  <!-- ==================== 圖表渲染 ==================== -->
+  <!-- ===== 圖表渲染 ===== -->
   <script>
-    /* ===== 原始數據（由 Python 注入） ===== */
-    const radar_data = {"labels": ["數與代數", "度量、圖形與空間", "數據處理"], "school_scores": [77.5, 75.9, 70.3], "national_scores": [58.5, 54.2, 46.6], "hk_scores": [51.4, 45.7, 38.0]};
-    const gradeUnitRadars = [{"grade": "S1", "canvas_id": "unitRadar_S1", "n_students": 8, "labels": ["數與代數", "度量、圖形與空間", "數據處理"], "school": [79.2, 75.5, 75.0], "national": [58.5, 54.2, 46.6], "hk": [51.4, 45.7, 38.0], "units_by_area": [{"area": "數與代數", "pct": 79.2, "units": [{"name": "基礎計算", "pct": 68.8}, {"name": "有向數", "pct": 68.8}, {"name": "近似值與數值估算", "pct": 93.8}, {"name": "百分法", "pct": 62.5}, {"name": "代數式", "pct": 100.0}, {"name": "一元一次方程", "pct": 100.0}, {"name": "多項式", "pct": 74.6}]}, {"area": "度量、圖形與空間", "pct": 75.5, "units": [{"name": "立體圖形", "pct": 84.4}, {"name": "求積法", "pct": 59.4}, {"name": "角和平行線", "pct": 84.4}, {"name": "直角坐標系", "pct": 74.5}]}, {"area": "數據處理", "pct": 75.0, "units": [{"name": "數據的組織", "pct": 81.2}, {"name": "數據的表達", "pct": 68.8}]}]}, {"grade": "S2", "canvas_id": "unitRadar_S2", "n_students": 7, "labels": ["數與代數", "度量、圖形與空間", "數據處理"], "school": [68.6, 61.9, 51.2], "national": [58.5, 54.2, 46.6], "hk": [51.4, 45.7, 38.0], "units_by_area": [{"area": "數與代數", "pct": 68.6, "units": [{"name": "有理數與無理數", "pct": 85.7}, {"name": "率比及比例", "pct": 52.4}, {"name": "二元一次方程", "pct": 61.9}, {"name": "多項式", "pct": 52.4}, {"name": "恆等式", "pct": 71.4}, {"name": "公式", "pct": 80.0}]}, {"area": "度量、圖形與空間", "pct": 61.9, "units": [{"name": "量度的誤差", "pct": 78.6}, {"name": "弧長和扇形面積", "pct": 50.0}, {"name": "求積法", "pct": 71.4}, {"name": "多邊形", "pct": 100.0}, {"name": "全等三角形", "pct": 42.9}, {"name": "相似三角形", "pct": 42.9}, {"name": "畢氏定理", "pct": 64.3}, {"name": "三角學", "pct": 53.6}]}, {"area": "數據處理", "pct": 51.2, "units": [{"name": "數據的組織", "pct": 54.8}, {"name": "數據的表達", "pct": 47.6}]}]}];
+    const chartData = {"trend": {"school": [48.8, 58.5, 86.7], "hk": [32.2, 40.1, 71.3], "mainland": [52.8, 62.1, 79.9], "national": [32.9, 42.7, 71.6]}, "area_radar": {"labels": ["數", "圖形與空間", "度量", "數據處理", "代數"], "school": [77.8, 79.2, 72.9, 75.4, 68.0], "national": [70.1, 66.5, 65.8, 60.2, 58.2], "hk": [67.5, 68.5, 63.1, 55.1, 55.2]}, "unit_radar": {"labels": ["數綜合應用", "圖形與空間綜合應用", "度量綜合應用", "數據處理綜合應用", "代數綜合應用"], "school": [77.8, 79.2, 72.9, 75.4, 68.0], "national": [70.1, 66.5, 65.8, 60.2, 58.2], "hk": [67.5, 68.5, 63.1, 55.1, 55.2]}, "distribution": [12, 7, 3, 1], "grade_trend": {"datasets": [{"label": "P1", "data": [47.9, 56.0, 88.1]}, {"label": "P2", "data": [45.1, 52.4, 89.1]}, {"label": "P3", "data": [44.9, 17.1, 63.7]}, {"label": "P5", "data": [78.8, null, null]}, {"label": "S1", "data": [84.8, 90.5, 95.7]}, {"label": "S2", "data": [70.2, 88.8, null]}]}};
 
     /* ---------- 1. 三輪百分位趨勢柱狀圖 ---------- */
     new Chart(document.getElementById('comparisonChart'), {
@@ -2780,80 +3055,47 @@
       data: {
         labels: ["初賽", "複賽", "決賽"],
       datasets: [
-      { label: '本校', data: [48.8, 58.5, 86.7], backgroundColor: 'rgba(59, 130, 246, 0.85)', borderRadius: 6
-    },
-      { label: '香港', data: [32.2, 40.1, 71.3], backgroundColor: 'rgba(16, 185, 129, 0.85)', borderRadius: 6 },
-      { label: '內地', data: [52.8, 62.1, 79.9], backgroundColor: 'rgba(249, 115, 22, 0.85)', borderRadius: 6 },
-      { label: '全國', data: [32.9, 42.7, 71.6], backgroundColor: 'rgba(139, 92, 246, 0.85)', borderRadius: 6 }
+      { label: '本校', data: chartData.trend.school, backgroundColor: 'rgba(59, 130, 246, 0.85)', borderRadius: 6 },
+      { label: '香港', data: chartData.trend.hk, backgroundColor: 'rgba(16, 185, 129, 0.85)', borderRadius: 6 },
+      { label: '內地', data: chartData.trend.mainland, backgroundColor: 'rgba(249, 115, 22, 0.85)', borderRadius: 6 },
+      { label: '全國', data: chartData.trend.national, backgroundColor: 'rgba(139, 92, 246, 0.85)', borderRadius: 6 }
     ]
       },
       options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'top' },
-        title: { display: true, text: '累積百分位排名（超越%參賽者）' }
-      },
-      scales: {
-        y: { beginAtZero: true, max: 100, ticks: { callback: v => '超越' + v + '%' } }
-      }
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top' }, title: { display: true, text: '累積百分位排名（超越%參賽者）' } },
+      scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => '超越' + v + '%' } } }
     }
     });
 
-    /* ---------- 2. 學習範疇雷達圖（中學3大範疇） ---------- */
+    /* ---------- 2. 五大學習範疇雷達圖 ---------- */
     new Chart(document.getElementById('areaRadarChart'), {
       type: 'radar',
       data: {
-        labels: radar_data.labels,
+        labels: chartData.area_radar.labels,
         datasets: [{
-          label: '本校',
-          data: radar_data.school_scores,
-          borderColor: '#3B82F6',
-          backgroundColor: 'rgba(59, 130, 246, 0.1)',
-          borderWidth: 3,
-          pointBackgroundColor: '#3B82F6',
-          pointBorderColor: '#ffffff',
-          pointBorderWidth: 2,
-          pointRadius: 6
+          label: '本校', data: chartData.area_radar.school,
+          borderColor: '#3B82F6', backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          borderWidth: 3, pointBackgroundColor: '#3B82F6', pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 6
         }, {
-          label: '全國平均',
-          data: radar_data.national_scores,
-          borderColor: '#EF4444',
-          backgroundColor: 'rgba(239, 68, 68, 0.1)',
-          borderWidth: 3,
-          pointBackgroundColor: '#EF4444',
-          pointBorderColor: '#ffffff',
-          pointBorderWidth: 2,
-          pointRadius: 6
+          label: '全國平均', data: chartData.area_radar.national,
+          borderColor: '#EF4444', backgroundColor: 'rgba(239, 68, 68, 0.1)',
+          borderWidth: 3, pointBackgroundColor: '#EF4444', pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 6
         }, {
-          label: '香港平均',
-          data: radar_data.hk_scores,
-          borderColor: '#10B981',
-          backgroundColor: 'rgba(16, 185, 129, 0.1)',
-          borderWidth: 3,
-          pointBackgroundColor: '#10B981',
-          pointBorderColor: '#ffffff',
-          pointBorderWidth: 2,
-          pointRadius: 6
+          label: '香港平均', data: chartData.area_radar.hk,
+          borderColor: '#10B981', backgroundColor: 'rgba(16, 185, 129, 0.1)',
+          borderWidth: 3, pointBackgroundColor: '#10B981', pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 6
         }]
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          r: {
-            angleLines: { display: true, color: 'rgba(0, 0, 0, 0.1)' },
-            suggestedMin: 0,
-            suggestedMax: 100,
-            ticks: { stepSize: 20, font: { size: 10 }, callback: v => v + '%' },
-            pointLabels: { font: { size: 14, weight: 'bold' } }
-          }
-        },
+        responsive: true, maintainAspectRatio: false,
+        scales: { r: { angleLines: { display: true, color: 'rgba(0,0,0,0.1)' }, suggestedMin: 0, suggestedMax: 100, ticks: { stepSize: 20, font: { size: 10 }, callback: v => v + '%' }, pointLabels: { font: { size: 14, weight: 'bold' } } } },
         plugins: { legend: { display: false } }
       }
     });
 
     /* ---------- 3. 年級學習單元雷達圖（動態生成） ---------- */
+    const gradeUnitRadars = [{"grade": "P1", "canvas_id": "unitRadar_P1", "n_students": 53, "labels": ["數", "度量", "圖形與空間"], "school": [88.5, 70.8, 78.1], "national": [70.1, 65.8, 66.5], "hk": [67.5, 63.1, 68.5], "units_by_area": [{"area": "數", "pct": 88.5, "units": [{"name": "20以內的數", "pct": 96.8}, {"name": "基本加法和減法", "pct": 75.5}, {"name": "100以內的數", "pct": 87.2}, {"name": "進行兩個數的加法運算", "pct": 91.3}]}, {"area": "度量", "pct": 70.8, "units": [{"name": "認識長度和距離的概念", "pct": 64.2}, {"name": "貨幣(一)", "pct": 67.9}, {"name": "長度和距離(二)", "pct": 81.0}, {"name": "時間(一)", "pct": 70.5}]}, {"area": "圖形與空間", "pct": 78.1, "units": [{"name": "立體圖形(一)", "pct": 74.5}, {"name": "平面圖形", "pct": 82.5}, {"name": "方向和位置(一)", "pct": 77.5}]}]}, {"grade": "P2", "canvas_id": "unitRadar_P2", "n_students": 65, "labels": ["數", "度量", "圖形與空間", "數據處理"], "school": [71.8, 75.5, 85.8, 89.2], "national": [70.1, 65.8, 66.5, 60.2], "hk": [67.5, 63.1, 68.5, 55.1], "units_by_area": [{"area": "數", "pct": 71.8, "units": [{"name": "三位數", "pct": 63.8}, {"name": "加法和減法(二)", "pct": 46.9}, {"name": "基本乘法", "pct": 58.6}, {"name": "四位數", "pct": 82.9}, {"name": "加法和減法(三)", "pct": 69.0}, {"name": "基本除法", "pct": 86.7}]}, {"area": "度量", "pct": 75.5, "units": [{"name": "長度和距離(三)", "pct": 65.6}, {"name": "時間(二)", "pct": 85.6}, {"name": "貨幣(二)", "pct": 75.4}]}, {"area": "圖形與空間", "pct": 85.8, "units": [{"name": "立體圖形(二)", "pct": 55.4}, {"name": "角", "pct": 94.6}, {"name": "方向和位置(二)", "pct": 95.4}, {"name": "四邊形(一)", "pct": 91.9}]}, {"area": "數據處理", "pct": 89.2, "units": [{"name": "象形圖", "pct": 89.2}]}]}, {"grade": "P3", "canvas_id": "unitRadar_P3", "n_students": 46, "labels": ["數", "度量", "圖形與空間", "數據處理"], "school": [75.4, 72.3, 71.9, 67.7], "national": [70.1, 65.8, 66.5, 60.2], "hk": [67.5, 63.1, 68.5, 55.1], "units_by_area": [{"area": "數", "pct": 75.4, "units": [{"name": "五位數", "pct": 56.9}, {"name": "乘法(一)", "pct": 63.0}, {"name": "除法(一)", "pct": 86.2}, {"name": "四則運算(一)", "pct": 79.7}, {"name": "分數(一)", "pct": 91.2}]}, {"area": "度量", "pct": 72.3, "units": [{"name": "長度和距離(四)", "pct": 54.4}, {"name": "時間(三)", "pct": 70.0}, {"name": "容量", "pct": 73.3}, {"name": "時間(四)", "pct": 85.2}, {"name": "重量", "pct": 78.9}]}, {"area": "圖形與空間", "pct": 71.9, "units": [{"name": "四邊形(二)", "pct": 72.9}, {"name": "三角形", "pct": 70.9}]}, {"area": "數據處理", "pct": 67.7, "units": [{"name": "棒形圖(一)", "pct": 67.7}]}]}, {"grade": "P5", "canvas_id": "unitRadar_P5", "n_students": 1, "labels": ["數", "度量", "圖形與空間", "數據處理", "代數"], "school": [100.0, 100.0, 100.0, 100.0, 87.5], "national": [70.1, 65.8, 66.5, 60.2, 58.2], "hk": [67.5, 63.1, 68.5, 55.1, 55.2], "units_by_area": [{"area": "數", "pct": 100.0, "units": [{"name": "多位數", "pct": 100.0}, {"name": "分數(三)", "pct": 100.0}, {"name": "分數(四)", "pct": 100.0}, {"name": "小數(三)", "pct": 100.0}, {"name": "分數(五)", "pct": 100.0}]}, {"area": "度量", "pct": 100.0, "units": [{"name": "面積(二)", "pct": 100.0}, {"name": "體積(一)", "pct": 100.0}]}, {"area": "圖形與空間", "pct": 100.0, "units": [{"name": "圓", "pct": 100.0}, {"name": "立體圖形(三)", "pct": 100.0}]}, {"area": "數據處理", "pct": 100.0, "units": [{"name": "棒形圖(三)", "pct": 100.0}]}, {"area": "代數", "pct": 87.5, "units": [{"name": "代數的初步認識", "pct": 75.0}, {"name": "簡易方程(一)", "pct": 100.0}]}]}];
     const gradeRadarColors = ['#8B5CF6', '#3B82F6', '#10B981', '#F59E0B', '#EC4899', '#14B8A6'];
     gradeUnitRadars.forEach(function (gr, idx) {
       const canvas = document.getElementById(gr.canvas_id);
@@ -2896,35 +3138,22 @@
       type: 'doughnut',
       data: {
         labels: ['Top 10% (超越90%)', 'Top 25% (超越75%)', 'Top 50% (超越50%)', '平均以下'],
-        datasets: [{
-          data: [12, 7, 3, 1],
-      backgroundColor: ['#10B981', '#3B82F6', '#F59E0B', '#94A3B8'],
-      borderWidth: 0
-    }]
+        datasets: [{ data: chartData.distribution, backgroundColor: ['#10B981', '#3B82F6', '#F59E0B', '#94A3B8'], borderWidth: 0 }]
       },
       options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      cutout: '55%',
-      plugins: {
-        legend: { position: 'right', labels: { usePointStyle: true, padding: 12, font: { size: 11 } } },
-        tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '人次' } }
+        responsive: true, maintainAspectRatio: false, cutout: '55%',
+        plugins: { legend: { position: 'right', labels: { usePointStyle: true, padding: 12, font: { size: 11 } } }, tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.raw + '人次' } } }
       }
-    }
     });
 
     /* ---------- 5. 各年級百分位趨勢折線圖（null = 不顯示，避免假性下降） ---------- */
     const gradeColors = ['#3B82F6', '#10B981', '#8B5CF6', '#F59E0B', '#EC4899', '#14B8A6'];
-    const gradeDatasets = [{"label": "P1", "data": [47.9, 56.0, 88.1]}, {"label": "P2", "data": [45.1, 52.4, 89.1]}, {"label": "P3", "data": [44.9, 17.1, 63.7]}, {"label": "P5", "data": [78.8, null, null]}, {"label": "S1", "data": [84.8, 90.5, 95.7]}, {"label": "S2", "data": [70.2, 88.8, null]}];
-    const gradeSets = gradeDatasets.map((ds, i) => ({
+    const gradeSets = chartData.grade_trend.datasets.map((ds, i) => ({
       label: ds.label,
       data: ds.data,
       borderColor: gradeColors[i % gradeColors.length],
       backgroundColor: gradeColors[i % gradeColors.length] + '1A',
-      borderWidth: 3,
-      tension: 0.3,
-      fill: false,
-      pointRadius: 5,
+      borderWidth: 3, tension: 0.3, fill: false, pointRadius: 5,
       pointBackgroundColor: gradeColors[i % gradeColors.length],
       spanGaps: false  /* 關鍵：null 值處不連線，避免顯示假性下降 */
     }));
@@ -2932,15 +3161,9 @@
       type: 'line',
       data: { labels: ["初賽", "複賽", "決賽"], datasets: gradeSets },
       options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'top', labels: { usePointStyle: true } },
-        title: { display: true, text: '累積百分位趨勢（僅顯示有參賽數據的輪次）' }
-      },
-      scales: {
-        y: { beginAtZero: true, max: 100, ticks: { callback: v => '超越' + v + '%' } }
-      }
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'top', labels: { usePointStyle: true } }, title: { display: true, text: '累積百分位趨勢（僅顯示有參賽數據的輪次）' } },
+      scales: { y: { beginAtZero: true, max: 100, ticks: { callback: v => '超越' + v + '%' } } }
     }
     });
   </script>
